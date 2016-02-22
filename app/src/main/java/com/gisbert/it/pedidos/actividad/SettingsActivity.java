@@ -1,4 +1,4 @@
-package com.pluscel.pluscelmovil.actividad;
+package com.gisbert.it.pedidos.actividad;
 
 /**
  * Created by Pablo Pincheira on 28/09/2015.
@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.pluscel.pluscelmovil.R;
-import com.pluscel.pluscelmovil.dom.GestionConfigRepositorio;
-import com.pluscel.pluscelmovil.dom.GestionConfig;
+import com.gisbert.it.pedidos.R;
+import com.gisbert.it.pedidos.dom.GestionConfigRepositorio;
+import com.gisbert.it.pedidos.dom.GestionConfig;
 
 public class SettingsActivity extends Activity {
 

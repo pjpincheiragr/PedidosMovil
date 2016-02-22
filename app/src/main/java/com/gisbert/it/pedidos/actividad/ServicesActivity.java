@@ -1,4 +1,4 @@
-package com.pluscel.pluscelmovil.actividad;
+package com.gisbert.it.pedidos.actividad;
 
 /**
  * Created by Pablo Pincheira on 11/10/2015.
@@ -36,9 +36,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import com.pluscel.pluscelmovil.R;
-import com.pluscel.pluscelmovil.dom.*;
-import com.pluscel.pluscelmovil.serv.*;
+import com.gisbert.it.pedidos.R;
+import com.gisbert.it.pedidos.dom.*;
+import com.gisbert.it.pedidos.serv.*;
 public class ServicesActivity  extends Activity  {
 
     String url;

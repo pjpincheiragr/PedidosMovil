@@ -1,4 +1,4 @@
-package com.pluscel.pluscelmovil.actividad;
+package com.gisbert.it.pedidos.actividad;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,9 +10,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.pluscel.pluscelmovil.R;
-import com.pluscel.pluscelmovil.dom.Cliente;
-
+import com.gisbert.it.pedidos.dom.Cliente;
+import com.gisbert.it.pedidos.*;
 import org.springframework.http.HttpAuthentication;
 import org.springframework.http.HttpBasicAuthentication;
 import org.springframework.http.HttpEntity;

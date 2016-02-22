@@ -1,4 +1,4 @@
-package com.pluscel.pluscelmovil.actividad;
+package com.gisbert.it.pedidos.actividad;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,13 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.pluscel.pluscelmovil.R;
-import com.pluscel.pluscelmovil.dom.Falla;
-import com.pluscel.pluscelmovil.dom.FallaEquipoTecnico;
-import com.pluscel.pluscelmovil.dom.FallaEquipoTecnicoRef;
-import com.pluscel.pluscelmovil.dom.OrdenServicio;
-import com.pluscel.pluscelmovil.dom.Tecnico;
-import com.pluscel.pluscelmovil.serv.OrdenServicios;
+import com.gisbert.it.pedidos.R;
+import com.gisbert.it.pedidos.dom.Falla;
+import com.gisbert.it.pedidos.dom.FallaEquipoTecnico;
+import com.gisbert.it.pedidos.dom.FallaEquipoTecnicoRef;
+import com.gisbert.it.pedidos.dom.OrdenServicio;
+import com.gisbert.it.pedidos.dom.Tecnico;
+import com.gisbert.it.pedidos.serv.OrdenServicios;
 
 
 import org.springframework.http.HttpAuthentication;

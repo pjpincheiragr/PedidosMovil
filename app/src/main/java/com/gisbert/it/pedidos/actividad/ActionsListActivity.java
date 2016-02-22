@@ -1,4 +1,4 @@
-package com.pluscel.pluscelmovil.actividad;
+package com.gisbert.it.pedidos.actividad;
 
 /**
  * Created by Pablo Pincheira on 09/11/2015.
@@ -26,17 +26,17 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.concurrent.ExecutionException;
 
-import com.gisbert.it.pedidos.serv.
-import com.pluscel.pluscelmovil.serv.Equipos;
-import com.pluscel.pluscelmovil.R;
-import com.pluscel.pluscelmovil.dom.Equipo;
-import com.pluscel.pluscelmovil.dom.Actions;
-import com.pluscel.pluscelmovil.serv.Equipos;
-import com.pluscel.pluscelmovil.dom.IsisService;
-import com.pluscel.pluscelmovil.serv.Greeting;
-import com.pluscel.pluscelmovil.serv.RestLink;
-import com.pluscel.pluscelmovil.serv.RestLinks;
-import com.pluscel.pluscelmovil.serv.Services;
+
+import com.gisbert.it.pedidos.serv.Equipos;
+import com.gisbert.it.pedidos.R;
+import com.gisbert.it.pedidos.dom.Equipo;
+import com.gisbert.it.pedidos.dom.Actions;
+import com.gisbert.it.pedidos.serv.Equipos;
+import com.gisbert.it.pedidos.dom.IsisService;
+import com.gisbert.it.pedidos.serv.Greeting;
+import com.gisbert.it.pedidos.serv.RestLink;
+import com.gisbert.it.pedidos.serv.RestLinks;
+import com.gisbert.it.pedidos.serv.Services;
 
 public class ActionsListActivity extends Activity {
     String serviceurl;

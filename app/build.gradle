@@ -16,6 +16,7 @@ android {
         exclude 'META-INF/dependencies.txt'
         exclude 'META-INF/LGPL2.1'
     }
+
     defaultConfig {
         applicationId "com.gisbert.it.pedidos"
         minSdkVersion 15
@@ -30,6 +31,7 @@ android {
         }
     }
 }
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

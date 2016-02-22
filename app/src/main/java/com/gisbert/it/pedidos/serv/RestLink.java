@@ -1,4 +1,4 @@
-package com.pluscel.pluscelmovil.serv;
+package com.gisbert.it.pedidos.serv;
 
 /**
  * Created by Pablo Pincheira on 15/10/2015.

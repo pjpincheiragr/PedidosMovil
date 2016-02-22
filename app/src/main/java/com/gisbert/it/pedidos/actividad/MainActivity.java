@@ -1,4 +1,4 @@
-package com.pluscel.pluscelmovil.actividad;
+package com.gisbert.it.pedidos.actividad;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,13 +16,13 @@ import android.widget.Toast;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.pluscel.pluscelmovil.R;
-import com.pluscel.pluscelmovil.dom.GestionConfigRepositorio;
-import com.pluscel.pluscelmovil.dom.GestionConfig;
-import com.pluscel.pluscelmovil.serv.Equipos;
-import com.pluscel.pluscelmovil.serv.OrdenServicios;
-import com.pluscel.pluscelmovil.serv.Repuestos;
-import com.pluscel.pluscelmovil.serv.RestLink;
+import com.gisbert.it.pedidos.R;
+import com.gisbert.it.pedidos.dom.GestionConfigRepositorio;
+import com.gisbert.it.pedidos.dom.GestionConfig;
+import com.gisbert.it.pedidos.serv.Equipos;
+import com.gisbert.it.pedidos.serv.OrdenServicios;
+import com.gisbert.it.pedidos.serv.Repuestos;
+import com.gisbert.it.pedidos.serv.RestLink;
 
 import org.springframework.http.HttpAuthentication;
 import org.springframework.http.HttpBasicAuthentication;

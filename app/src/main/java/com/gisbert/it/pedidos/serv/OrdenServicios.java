@@ -1,5 +1,4 @@
-package com.pluscel.pluscelmovil.serv;
-
+package com.gisbert.it.pedidos.serv;
 import java.util.List;
 
 /**

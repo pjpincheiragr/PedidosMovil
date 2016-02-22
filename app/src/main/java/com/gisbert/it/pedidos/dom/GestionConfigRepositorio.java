@@ -1,4 +1,4 @@
-package com.pluscel.pluscelmovil.dom;
+package com.gisbert.it.pedidos.dom;
 
 import android.app.Activity;
 import android.content.Context;

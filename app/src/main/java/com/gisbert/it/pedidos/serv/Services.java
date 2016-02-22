@@ -1,6 +1,5 @@
-package com.pluscel.pluscelmovil.serv;
-
-import com.pluscel.pluscelmovil.dom.IsisService;
+package com.gisbert.it.pedidos.serv;
+import com.gisbert.it.pedidos.dom.IsisService;
 
 import java.util.List;
 

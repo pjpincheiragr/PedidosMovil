@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PlusCelMovil</string>
+    <string name="app_name">Pedidos</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -50,5 +50,4 @@
     <string name="orden_comision_label">Comisión:</string>
     <string name="orden_estado_label">Estado:</string>
     <string name="orden_garantia_label">Garantia:</string>
-
 </resources>

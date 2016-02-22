@@ -1,9 +1,9 @@
-package com.pluscel.pluscelmovil.dom;
+package com.gisbert.it.pedidos.dom;
 
 /**
  * Created by Pablo Pincheira on 20/10/2015.
  */
-public class Equipo {
+public class    Equipo {
 
     Members members;
 

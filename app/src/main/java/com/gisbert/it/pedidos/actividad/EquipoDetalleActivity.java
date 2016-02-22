@@ -1,4 +1,4 @@
-package com.pluscel.pluscelmovil.actividad;
+package com.gisbert.it.pedidos.actividad;
 
 /**
  * Created by Pablo Pincheira on 14/11/2015.
@@ -32,8 +32,8 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 import java.util.concurrent.ExecutionException;
 
-import com.pluscel.pluscelmovil.R;
-import com.pluscel.pluscelmovil.dom.Equipo;
+import com.gisbert.it.pedidos.R;
+import com.gisbert.it.pedidos.dom.Equipo;
 
 
 

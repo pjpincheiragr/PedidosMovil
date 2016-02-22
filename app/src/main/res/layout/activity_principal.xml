@@ -21,7 +21,7 @@
             android:layout_weight="1"
             android:onClick="onClickButton_EquipoReparado"
             android:adjustViewBounds="false"
-            android:src="@mipmap/ic_equiporepa"
+            android:src="@mipmap/ic_launcher"
             android:clickable="false"
             android:scaleType="fitCenter"
             android:tintMode="src_in"
@@ -35,7 +35,7 @@
             android:id="@+id/imageButton4"
             android:layout_weight="1.01"
             android:scaleType="fitCenter"
-            android:src="@mipmap/ic_sinrevizar"
+            android:src="@mipmap/ic_launcher"
             android:onClick="onClickButton_EquipoSinRevisar"
             android:padding="@dimen/abc_action_bar_default_padding_end_material" />
 
@@ -45,7 +45,7 @@
             android:id="@+id/imageButton7"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:src="@mipmap/ic_sinarreglo"
+            android:src="@mipmap/ic_launcher"
             android:onClick="onClickButton_EquipoSinArreglo"
             android:padding="@dimen/abc_action_bar_default_padding_start_material" />
 
@@ -65,14 +65,14 @@
             android:onClick="onClickButton_ListClientes"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:src="@mipmap/ic_cliente_new"
+            android:src="@mipmap/ic_launcher"
             android:padding="@dimen/abc_action_bar_default_padding_end_material" />
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:id="@+id/imageButton3"
             android:layout_weight="1"
-            android:src="@mipmap/ic_tecniconew"
+            android:src="@mipmap/ic_launcher"
             android:scaleType="fitCenter"
             android:onClick="onClickButton_ListTecnicos"
             android:padding="@dimen/abc_action_bar_default_padding_end_material" />
@@ -88,7 +88,7 @@
             android:layout_height="fill_parent"
             android:id="@+id/imageButton5"
             android:layout_weight="1"
-            android:src="@mipmap/ic_os_new"
+            android:src="@mipmap/ic_launcher"
             android:scaleType="fitCenter"
             android:onClick="onClickButton_OrdenServicio"
             android:padding="@dimen/abc_action_bar_default_padding_start_material" />
@@ -97,7 +97,7 @@
             android:layout_height="fill_parent"
             android:id="@+id/imageButton8"
             android:layout_weight="1"
-            android:src="@mipmap/ic_reparacion_new"
+            android:src="@mipmap/ic_launcher"
             android:scaleType="fitCenter"
             android:onClick="onClickButton_Reparacion"
             android:contentDescription="Reparaciones"

@@ -1,4 +1,4 @@
-package com.pluscel.pluscelmovil.actividad;
+package com.gisbert.it.pedidos.actividad;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -38,16 +38,16 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.pluscel.pluscelmovil.serv.Equipos;
-import com.pluscel.pluscelmovil.R;
-import com.pluscel.pluscelmovil.dom.Equipo;
-import com.pluscel.pluscelmovil.serv.Equipos;
-import com.pluscel.pluscelmovil.dom.IsisService;
-import com.pluscel.pluscelmovil.serv.Greeting;
-import com.pluscel.pluscelmovil.serv.RestLink;
-import com.pluscel.pluscelmovil.serv.RestLinks;
-import com.pluscel.pluscelmovil.serv.Services;
-import com.pluscel.pluscelmovil.serv.Tecnicos;
+import com.gisbert.it.pedidos.serv.Equipos;
+import com.gisbert.it.pedidos.R;
+import com.gisbert.it.pedidos.dom.Equipo;
+import com.gisbert.it.pedidos.serv.Equipos;
+import com.gisbert.it.pedidos.dom.IsisService;
+import com.gisbert.it.pedidos.serv.Greeting;
+import com.gisbert.it.pedidos.serv.RestLink;
+import com.gisbert.it.pedidos.serv.RestLinks;
+import com.gisbert.it.pedidos.serv.Services;
+import com.gisbert.it.pedidos.serv.Tecnicos;
 
 
 public class EquipoListActivity extends Activity {
