@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">PlusCelMovil</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="List_Clientes">CLIENTES</string>
+    <string name="List_Equipos">EQUIPOS</string>
+    <string name="List_Tecnicos">TECNICOS</string>
+    <string name="List_OrdenServicios">O.S.</string>
+    <string name="title_activity_equipo_list">EquipoListActivity</string>
+
+
+    <string name="id_label">The ID is</string>
+    <string name="id_value">[id]</string>
+    <string name="content_label">The Content is</string>
+    <string name="content_value">[content]</string>
+    <string name="action_refresh">Refresh</string>
+
+    <string name="title_activity_actions_list">ActionsListActivity</string>
+    <string name="actionlist_title">Action List</string>
+    <string name="equipo_marca_label">Marca:</string>
+    <string name="equipo_modelo_label">Modelo:</string>
+    <string name="equipo_imei_label">IMEI:</string>
+
+    <string name="button_alumno_ir_alcurso">MARCA</string>
+    <string name="alumno_ver_direccion">MODELO</string>
+    <string name="cliente_apellido_label">Apellido:</string>
+    <string name="cliente_nombre_label">Nombre:</string>
+    <string name="cliente_dni_label">DNI:</string>
+    <string name="cliente_direccion_label">Dirección:</string>
+    <string name="cliente_telefono_label">Telefono:</string>
+    <string name="cliente_email_label">Email:</string>
+
+
+    <string name="repuesto_tipoRepuesto_label">Tipo Repuesto:</string>
+    <string name="repuesto_modelo_label">Modelo:</string>
+    <string name="repuesto_descripcion_label">Descripción:</string>
+    <string name="repuesto_fechaArribo_label">fecha arribo:</string>
+    <string name="repuesto_costo_label">Costo:</string>
+    <string name="repuesto_cantidad_label">Cantidad:</string>
+
+
+    <string name="orden_numero_label">Número:</string>
+    <string name="orden_tecnico_label">Tecnico:</string>
+    <string name="orden_cliente_label">Cliente:</string>
+    <string name="orden_equipo_label">Equipo:</string>
+    <string name="orden_fechaHora_label">Fecha:</string>
+    <string name="orden_falla_label">Falla:</string>
+    <string name="orden_importe_label">Importe:</string>
+    <string name="orden_comision_label">Comisión:</string>
+    <string name="orden_estado_label">Estado:</string>
+    <string name="orden_garantia_label">Garantia:</string>
+
+</resources>

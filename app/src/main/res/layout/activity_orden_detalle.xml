@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.pluscel.pluscelmovil.actividad.OrdenDetalleActivity"
+    android:background="@color/Fondo">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/orden_numero_label"
+        android:id="@+id/textView_orden_numero_label"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_orden_numero"
+        android:layout_toEndOf="@+id/textView_orden_tecnico_label"
+        android:layout_above="@+id/textView_orden_tecnico_label"
+        android:layout_toRightOf="@+id/textView_orden_tecnico_label"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/TextoUsuario" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/orden_tecnico_label"
+        android:id="@+id/textView_orden_tecnico_label"
+        android:layout_below="@+id/textView_orden_numero_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_orden_tecnico"
+
+        android:linksClickable="true"
+        android:layout_toEndOf="@+id/textView_orden_tecnico_label"
+        android:layout_alignTop="@+id/textView_orden_tecnico_label"
+        android:layout_alignRight="@+id/textView_orden_numero"
+        android:layout_alignEnd="@+id/textView_orden_numero"
+        android:textColor="@color/TextoUsuario"
+        android:layout_alignLeft="@+id/textView_orden_numero"
+        android:layout_alignStart="@+id/textView_orden_numero"
+        android:onClick="onClick_Tecnico"
+        android:backgroundTintMode="src_over" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/orden_cliente_label"
+        android:id="@+id/textView_orden_cliente_label"
+        android:layout_below="@+id/textView_orden_tecnico_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_orden_cliente"
+        android:linksClickable="true"
+        android:layout_toEndOf="@+id/textView_orden_cliente_label"
+        android:layout_alignTop="@+id/textView_orden_cliente_label"
+        android:layout_alignRight="@+id/textView_orden_tecnico"
+        android:layout_alignEnd="@+id/textView_orden_tecnico"
+        android:textColor="@color/TextoUsuario"
+        android:layout_alignLeft="@+id/textView_orden_tecnico"
+        android:layout_alignStart="@+id/textView_orden_tecnico"
+        android:onClick="onClick_Cliente"
+        android:textColorLink="@color/Fondo"
+        android:textIsSelectable="true" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/orden_equipo_label"
+        android:id="@+id/textView_orden_equipo_label"
+        android:layout_below="@+id/textView_orden_cliente"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_orden_equipo"
+        android:layout_alignBottom="@+id/textView_orden_equipo_label"
+        android:layout_alignLeft="@+id/textView_orden_cliente"
+        android:layout_alignStart="@+id/textView_orden_cliente"
+        android:layout_alignRight="@+id/textView_orden_cliente"
+        android:layout_alignEnd="@+id/textView_orden_cliente"
+        android:textColor="@color/TextoUsuario"
+        android:onClick="onClick_Equipos" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/orden_fechaHora_label"
+        android:id="@+id/textView_orden_fechaHora_label"
+        android:layout_below="@+id/textView_orden_equipo_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_orden_fechaHora"
+        android:layout_alignBottom="@+id/textView_orden_fechaHora_label"
+        android:layout_alignLeft="@+id/textView_orden_equipo"
+        android:layout_alignStart="@+id/textView_orden_equipo"
+        android:layout_alignRight="@+id/textView_orden_equipo"
+        android:layout_alignEnd="@+id/textView_orden_equipo"
+        android:textColor="@color/TextoUsuario" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/orden_falla_label"
+        android:id="@+id/textView_orden_falla_label"
+        android:layout_below="@+id/textView_orden_fechaHora_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_orden_falla"
+
+
+        android:layout_alignTop="@+id/textView_orden_falla_label"
+
+
+        android:layout_alignLeft="@+id/textView_orden_fechaHora"
+        android:layout_alignStart="@+id/textView_orden_fechaHora"
+        android:layout_alignRight="@+id/textView_orden_fechaHora"
+        android:layout_alignEnd="@+id/textView_orden_fechaHora"
+        android:singleLine="false"
+        android:minLines="2"
+        android:maxLines="10"
+        android:textColor="@color/TextoUsuario" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/orden_importe_label"
+        android:id="@+id/textView_orden_importe_label"
+        android:layout_below="@+id/textView_orden_falla"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_orden_importe"
+        android:layout_alignBottom="@+id/textView_orden_importe_label"
+        android:layout_alignLeft="@+id/textView_orden_falla"
+        android:layout_alignStart="@+id/textView_orden_falla"
+        android:layout_alignRight="@+id/textView_orden_falla"
+        android:layout_alignEnd="@+id/textView_orden_falla"
+        android:textColor="@color/TextoUsuario" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/orden_comision_label"
+        android:id="@+id/textView_orden_comision_label"
+        android:layout_below="@+id/textView_orden_importe_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_orden_comision"
+        android:layout_alignBottom="@+id/textView_orden_comision_label"
+        android:layout_alignLeft="@+id/textView_orden_importe"
+        android:layout_alignStart="@+id/textView_orden_importe"
+        android:layout_alignRight="@+id/textView_orden_importe"
+        android:layout_alignEnd="@+id/textView_orden_importe"
+        android:textColor="@color/TextoUsuario" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/orden_estado_label"
+        android:id="@+id/textView_orden_estado_label"
+        android:layout_below="@+id/textView_orden_comision_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_orden_estado"
+        android:layout_alignBottom="@+id/textView_orden_estado_label"
+        android:layout_alignLeft="@+id/textView_orden_comision"
+        android:layout_alignStart="@+id/textView_orden_comision"
+        android:layout_alignRight="@+id/textView_orden_comision"
+        android:layout_alignEnd="@+id/textView_orden_comision"
+        android:textColor="@color/TextoUsuario" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/orden_garantia_label"
+        android:id="@+id/textView_orden_garantia_label"
+        android:layout_below="@+id/textView_orden_estado_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_orden_garantia"
+        android:layout_alignBottom="@+id/textView_orden_garantia_label"
+        android:layout_alignLeft="@+id/textView_orden_estado"
+        android:layout_alignStart="@+id/textView_orden_estado"
+        android:layout_alignRight="@+id/textView_orden_estado"
+        android:layout_alignEnd="@+id/textView_orden_estado"
+        android:textColor="@color/TextoUsuario" />
+
+</RelativeLayout>

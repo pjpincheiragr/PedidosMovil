@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/Fondo">
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="@string/List_Clientes"
+        android:id="@+id/button_ListCustomers"
+        android:layout_marginTop="20dp"
+
+        android:layout_centerHorizontal="true"
+        android:background="@color/FondoBoton"
+        android:textColor="@color/TextoBoton"
+        style="@style/AppTheme"
+        android:enabled="true"
+        android:onClick="onClickButton_ListCustomers" />
+
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="@string/List_Equipos"
+        android:id="@+id/button_Equipment"
+        android:layout_marginTop="90dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/FondoBoton"
+        android:enabled="true"
+        android:textColor="@color/TextoBoton"
+        android:onClick="onClickButton_Equipment" />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="@string/List_Tecnicos"
+        android:id="@+id/button_Technical"
+        android:layout_marginTop="160dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/FondoBoton"
+        android:enabled="true"
+        android:textColor="@color/TextoBoton"
+        android:onClick="onClickButton_prueba" />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="@string/List_OrdenServicios"
+        android:id="@+id/button_ByServices"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="230dp"
+        android:background="@color/FondoBoton"
+        android:enabled="false"
+        android:textColor="@color/TextoBoton"
+        />
+
+
+</RelativeLayout>

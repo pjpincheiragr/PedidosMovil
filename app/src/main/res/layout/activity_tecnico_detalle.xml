@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.pluscel.pluscelmovil.actividad.TecnicoDetalleActivity"
+    android:background="@color/Fondo">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/cliente_apellido_label"
+        android:id="@+id/textView_tecnico_apellido_label"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_tecnico_apellido"
+        android:layout_toEndOf="@+id/textView_tecnico_nombre_label"
+        android:layout_above="@+id/textView_tecnico_nombre_label"
+        android:layout_toRightOf="@+id/textView_tecnico_nombre_label"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/TextoUsuario" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/cliente_nombre_label"
+        android:id="@+id/textView_tecnico_nombre_label"
+        android:layout_below="@+id/textView_tecnico_apellido_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_tecnico_nombre"
+        android:layout_toEndOf="@+id/textView_tecnico_nombre_label"
+        android:layout_alignTop="@+id/textView_tecnico_nombre_label"
+        android:layout_alignRight="@+id/textView_tecnico_apellido"
+        android:layout_alignEnd="@+id/textView_tecnico_apellido"
+        android:textColor="@color/TextoUsuario"
+        android:layout_alignLeft="@+id/textView_tecnico_apellido"
+        android:layout_alignStart="@+id/textView_tecnico_apellido" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/cliente_dni_label"
+        android:id="@+id/textView_tecnico_dni_label"
+        android:layout_below="@+id/textView_tecnico_nombre_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_tecnico_dni"
+        android:layout_alignBottom="@+id/textView_tecnico_dni_label"
+        android:layout_alignLeft="@+id/textView_tecnico_nombre"
+        android:layout_alignStart="@+id/textView_tecnico_nombre"
+        android:layout_alignRight="@+id/textView_tecnico_nombre"
+        android:layout_alignEnd="@+id/textView_tecnico_nombre"
+        android:textColor="@color/TextoUsuario" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/cliente_direccion_label"
+        android:id="@+id/textView_tecnico_direccion_label"
+        android:layout_below="@+id/textView_tecnico_dni_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_tecnico_direccion"
+        android:layout_alignBottom="@+id/textView_tecnico_direccion_label"
+        android:layout_alignLeft="@+id/textView_tecnico_dni"
+        android:layout_alignStart="@+id/textView_tecnico_dni"
+        android:layout_alignRight="@+id/textView_tecnico_dni"
+        android:layout_alignEnd="@+id/textView_tecnico_dni"
+        android:textColor="@color/TextoUsuario" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/cliente_telefono_label"
+        android:id="@+id/textView_tecnico_telefono_label"
+        android:layout_below="@+id/textView_tecnico_direccion_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_tecnico_telefono"
+        android:layout_alignBottom="@+id/textView_tecnico_telefono_label"
+        android:layout_alignLeft="@+id/textView_tecnico_direccion"
+        android:layout_alignStart="@+id/textView_tecnico_direccion"
+        android:layout_alignRight="@+id/textView_tecnico_direccion"
+        android:layout_alignEnd="@+id/textView_tecnico_direccion"
+        android:textColor="@color/TextoUsuario" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/cliente_email_label"
+        android:id="@+id/textView_tecnico_email_label"
+        android:layout_below="@+id/textView_tecnico_telefono_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Etiquetas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_cliente_email"
+        android:layout_alignBottom="@+id/textView_tecnico_email_label"
+        android:layout_alignLeft="@+id/textView_tecnico_telefono"
+        android:layout_alignStart="@+id/textView_tecnico_telefono"
+        android:layout_alignRight="@+id/textView_tecnico_telefono"
+        android:layout_alignEnd="@+id/textView_tecnico_telefono"
+        android:textColor="@color/TextoUsuario" />
+
+
+</RelativeLayout>
