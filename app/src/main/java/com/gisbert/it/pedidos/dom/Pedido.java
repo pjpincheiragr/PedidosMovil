@@ -1,8 +1,9 @@
 package com.gisbert.it.pedidos.dom;
+
 /**
- * Created by Pablo Pincheira on 08/12/2015.
+ * Created by ASUS on 03/03/2016.
  */
-public class OrdenServicio {
+public class Pedido {
     Members members;
 
     public Members getMembers() {
@@ -16,57 +17,68 @@ public class OrdenServicio {
 
     // nested class
     public class Members{
-        DatoString numero;
-        DatoTecnico tecnico;
-        DatoCliente cliente;
-        DatoEquipo equipo;
+        DatoTipo tipo;
+        DatoProveedor proveedor;
         DatoString fechaHora;
-        DatoString falla;
-        DatoString importe;
-        DatoString comisionTecnico;
+        DatoVendedor vendedor;
+        DatoString valor;
         DatoString estado;
-        DatoString garantia;
-        DatoString EnviarAlertaSinArreglo;
-        DatoString EnviarAlertaTecnico;
+        DatoSucursal sucursal;
+        DatoString observacion;
+        DatoString activo;
 
-        public DatoString getNumero() {
-            return numero;
-        }
-        public void setTecnico(DatoTecnico tecnico) {
-            this.tecnico = tecnico;
-        }
-        public DatoTecnico getTecnico() {return tecnico;}
-        public void setEquipo(DatoEquipo equipo) {this.equipo = equipo;}
-        public DatoEquipo getEquipo() { return equipo;}
 
-        public DatoCliente getCliente() {
-            return cliente;
+        public DatoTipo getTipo() {
+            return tipo;
         }
-        public void setCliente(DatoCliente cliente) {
-            this.cliente = cliente;
+        public void setTipo(DatoTipo tipo) {
+            this.tipo = tipo;
         }
-        public DatoString getFechaHora() {
-            return fechaHora;
+        public DatoProveedor getProveedor() {return proveedor;}
+        public void setProveedor(DatoProveedor proveedor) {this.proveedor = proveedor;}
+        public DatoString getFechaHora() { return fechaHora;}
+        public void setFechaHora(DatoString fechaHora) {this.fechaHora = fechaHora;}
+
+        public DatoVendedor getVendedor() {
+            return vendedor;
         }
-        public DatoString getFalla() {
-            return falla;
+        public void setVendedor(DatoVendedor vendedor) {
+            this.vendedor = vendedor;
         }
-        public DatoString getImporte() {
-            return importe;
+        public DatoString getValor() {
+            return valor;
         }
-        public DatoString getComisionTecnico() {
-            return comisionTecnico;
+        public void setValor(DatoString valor) {
+            this.valor = valor;
         }
         public DatoString getEstado() {
             return estado;
         }
-        public DatoString getGarantia() {
-            return garantia;
+        public void setEstado(DatoString estado) {
+            this.estado = estado;
+        }
+
+        public DatoSucursal getSucursal() {
+            return sucursal;
+        }
+        public void setSucursal(DatoSucursal sucursal) {
+            this.sucursal = sucursal;
         }
 
 
+        public DatoString getObservacion() {
+            return observacion;
+        }
+        public void setObservacion(DatoString observacion) {
+            this.observacion = observacion;
+        }
 
-
+        public DatoString getActivo() {
+            return activo;
+        }
+        public void setActivo(DatoString activo) {
+            this.activo = activo;
+        }
 
         // nested classes
 
@@ -82,7 +94,7 @@ public class OrdenServicio {
             }
         }
 
-        public class DatoTecnico {
+        public class DatoTipo {
 
             DatoTitle value;
             public DatoTitle getValue() {return value;}
@@ -102,7 +114,7 @@ public class OrdenServicio {
                 }
             }
         }
-        public class DatoTecnicoRef {
+        public class DatoProveedor {
 
             DatoHref value;
             public DatoHref getValue() {return value;}
@@ -119,7 +131,7 @@ public class OrdenServicio {
             }
         }
 
-        public class DatoCliente {
+        public class DatoVendedor {
 
             DatoTitle value;
 
@@ -144,7 +156,7 @@ public class OrdenServicio {
             }
         }
 
-        public class DatoEquipo {
+        public class DatoSucursal {
 
             DatoTitle value;
 

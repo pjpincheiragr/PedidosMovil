@@ -1,4 +1,5 @@
 package com.gisbert.it.pedidos.actividad;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,14 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.gisbert.it.pedidos.R;
-import com.gisbert.it.pedidos.serv.OrdenServicios;
+import com.gisbert.it.pedidos.serv.Pedidos;
 import com.gisbert.it.pedidos.serv.RestLink;
 
 import org.springframework.http.HttpAuthentication;
@@ -44,7 +43,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by Pablo Pincheira on 08/12/2015.
  */
-public class OrdenServicioBusListActivity extends Activity {
+public class PedidoListActivity extends Activity {
     /**
      @Override
      protected void onCreate(Bundle savedInstanceState) {
@@ -75,80 +74,76 @@ public class OrdenServicioBusListActivity extends Activity {
      }
 
      **/
+
     String url;
     String user;
     String pass;
-    String numeroOrdenDeServicio;
-    OrdenServicios ordenServicios;
+    String estado;
+    Pedidos pedidos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orden_bus_list);
+        setContentView(R.layout.activity_pedido_list);
 
-        final Button button_buscar = (Button)findViewById(R.id.button_orden_Buscar);
-        button_buscar.setOnClickListener(new View.OnClickListener() {
+        ListView listview = (ListView) findViewById(R.id.listView_equipment);
+
+        Intent intent = getIntent();
+        url =  intent.getStringExtra("url")+ "services/RepositorioPedido/actions/listAll/invoke";
+        user =  intent.getStringExtra("user");
+        pass =  intent.getStringExtra("pass");
+        estado=intent.getStringExtra("estado");
+
+        try {
+            pedidos = new FillListOfPedidosThread().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        List<RestLink> LinksPedidosList = null;
+        final List<String> listNombres = new ArrayList<String>();
+        if ((pedidos !=null)&&(pedidos.getResult().getValue().size()!=0)) {
+            LinksPedidosList = pedidos.getResult().getValue();
+
+            //tomar nombres de los alumnos
+
+            for (RestLink pedidoLink : LinksPedidosList) {
+                listNombres.add(pedidoLink.getTitle());
+            }
+        }else mostrarMensaje("No Existen PEDIDOS");
+
+        //llenar la lista
+        final StableArrayAdapter adapter = new StableArrayAdapter(getBaseContext(),
+                android.R.layout.simple_list_item_1, listNombres);
+        listview.setAdapter(adapter);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onClick(View view) {
-                ListView listview = (ListView) findViewById(R.id.listView_orden_list);
-                Intent intent = getIntent();
-                url = intent.getStringExtra("url") + "services/OrdenServicioRepositorio/actions/buscarPorNumero/invoke";
-                user = intent.getStringExtra("user");
-                pass = intent.getStringExtra("pass");
-                final EditText editTextNumero=(EditText) findViewById(R.id.editText_orden_numero);
-                try {
-                    numeroOrdenDeServicio=editTextNumero.getText().toString();
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, final long id) {
+                final String item = (String) parent.getItemAtPosition(position);
 
-                    ordenServicios = new FillListOfOrdenServiciosThread().execute().get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
+                Log.v("nombre", pedidos.getResult().getValue().get(position).getTitle());
+                Log.v("link", pedidos.getResult().getValue().get(position).getHref());
 
-                List<RestLink> LinksEquiposList = null;
-                final List<String> listNombres = new ArrayList<String>();
-                if ((ordenServicios != null) && (ordenServicios.getResult().getValue().size()!=0)){
-                    LinksEquiposList = ordenServicios.getResult().getValue();
+                String urlEquipo = pedidos.getResult().getValue().get(position).getHref();
 
-                    //tomar nombres de los alumnos
+                Intent newIntent = new Intent("android.intent.action.ORDEN_DETALLE");
+                newIntent.putExtra("user",user);
+                newIntent.putExtra("pass",pass);
+                newIntent.putExtra("url",urlEquipo);
 
-                    for (RestLink equipoLink : LinksEquiposList) {
-                        listNombres.add(equipoLink.getTitle());
-                    }
-                }else
-                mostrarMensaje("No Existen Orden de Servicios");
+                startActivity(newIntent);
 
 
-                //llenar la lista
-                final StableArrayAdapter adapter = new StableArrayAdapter(getBaseContext(),
-                        android.R.layout.simple_list_item_1, listNombres);
-                listview.setAdapter(adapter);
+            }
+        });
 
-                listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, final View view,
-                                            int position, final long id) {
-                        final String item = (String) parent.getItemAtPosition(position);
-
-                        Log.v("nombre", ordenServicios.getResult().getValue().get(position).getTitle());
-                        Log.v("link", ordenServicios.getResult().getValue().get(position).getHref());
-
-                        String urlEquipo = ordenServicios.getResult().getValue().get(position).getHref();
-
-                        Intent newIntent = new Intent("android.intent.action.ORDEN_DETALLE");
-                        newIntent.putExtra("user",user);
-                        newIntent.putExtra("pass",pass);
-                        newIntent.putExtra("url",urlEquipo);
-
-                        startActivity(newIntent);
-
-
-                    }
-                });       }});
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -172,10 +167,11 @@ public class OrdenServicioBusListActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class FillListOfOrdenServiciosThread extends AsyncTask<Void, Void, OrdenServicios> {
+    private class FillListOfPedidosThread extends AsyncTask<Void, Void, Pedidos> {
         @Override
-        protected OrdenServicios doInBackground(Void...  params) {
+        protected Pedidos doInBackground(Void...  params) {
             try {
+
 
 
                 //Services services = null;
@@ -193,27 +189,20 @@ public class OrdenServicioBusListActivity extends Activity {
                 converter.getObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
                 restTemplate.getMessageConverters().add(converter);
-
-
                 HttpHeaders headers = new HttpHeaders();
                 headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-
-                UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
-                        .queryParam("numeroOrdenDeServicio", numeroOrdenDeServicio);
+                UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
                 HttpEntity<?> entity = new HttpEntity<>(headers);
-
-                ResponseEntity<OrdenServicios> response = restTemplate.exchange(builder.build().encode().toUri(),HttpMethod.POST, requestEntity, OrdenServicios.class);
-
-                OrdenServicios ordenes = response.getBody();
-
-                Log.v("listado OS contiene", ordenes.getResult().getValue().size() +"");
-                int arraySize = ordenes.getResult().getValue().size();
+                ResponseEntity<Pedidos> response = restTemplate.exchange(builder.build().encode().toUri(),HttpMethod.POST, requestEntity, Pedidos.class);
+                Pedidos pedidos = response.getBody();
+                Log.v("listado Equipos contiene", pedidos.getResult().getValue().size() +"");
+                int arraySize = pedidos.getResult().getValue().size();
                 RestLink[] equiposArray = new RestLink[arraySize];
                 for (int i=0; i< arraySize;i++){
-                    equiposArray[i] = ordenes.getResult().getValue().get(i);
-                    Log.v("os Encontrado", equiposArray[i].getTitle());
+                    equiposArray[i] = pedidos.getResult().getValue().get(i);
+                    Log.v("Equipo Encontrado", equiposArray[i].getTitle());
                 }
-                return ordenes;
+                return pedidos;
 
             } catch (Exception e) {
                 Log.e("main_activity", e.getMessage(), e);
@@ -221,14 +210,6 @@ public class OrdenServicioBusListActivity extends Activity {
 
             return null;
         }
-    }
-    private void mostrarMensaje(CharSequence text) {
-        Context context = getApplicationContext();
-
-        int duration = Toast.LENGTH_LONG;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
     }
     public String loadJSON() {
         String json = null;
@@ -253,7 +234,14 @@ public class OrdenServicioBusListActivity extends Activity {
         return json;
 
     }
+    private void mostrarMensaje(CharSequence text) {
+        Context context = getApplicationContext();
 
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
     private class StableArrayAdapter extends ArrayAdapter<String> {
 
         HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();

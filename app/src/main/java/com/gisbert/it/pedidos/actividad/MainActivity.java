@@ -1,5 +1,4 @@
 package com.gisbert.it.pedidos.actividad;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -15,35 +14,14 @@ import android.content.Intent;
 import android.widget.Toast;
 import android.util.Log;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.gisbert.it.pedidos.R;
 import com.gisbert.it.pedidos.dom.GestionConfigRepositorio;
 import com.gisbert.it.pedidos.dom.GestionConfig;
-import com.gisbert.it.pedidos.serv.Equipos;
-import com.gisbert.it.pedidos.serv.OrdenServicios;
-import com.gisbert.it.pedidos.serv.Repuestos;
-import com.gisbert.it.pedidos.serv.RestLink;
-
-import org.springframework.http.HttpAuthentication;
-import org.springframework.http.HttpBasicAuthentication;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     String url;
     String user;
     String pass;
-    Equipos equipos;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
                 gestionConfigRepositorio.guardarConfiguracion(activity, config);
                 Intent intent = new Intent("android.intent.action.PRINCIPAL_LIST");
 
+
+                startActivity(intent);
+              /*
                 intent.putExtra("url", config.getUrlRestful());
                 intent.putExtra("user", et_user.getText().toString());
                 intent.putExtra("pass", et_pass.getText().toString());
@@ -103,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 url =  intent.getStringExtra("url")+ "services/EquipoRepositorio/actions/listarTodos/invoke";
                 user =  intent.getStringExtra("user");
                 pass =  intent.getStringExtra("pass");
-
 
                 try {
 
@@ -119,49 +99,10 @@ public class MainActivity extends AppCompatActivity {
                 if ((equipos != null) && (equipos.getResult().getValue().size()!=0)){
                     startActivity(intent);
                 }else
-                    mostrarMensaje("El usario No tiene permiso de Acceso");
+                    mostrarMensaje("El usario No tiene permiso de Acceso");*/
 
             }
         });
-    }
-
-    private class FillListOfEquiposThread extends AsyncTask<Void, Void, Equipos> {
-        @Override
-        protected Equipos doInBackground(Void...  params) {
-            try {
-                //Services services = null;
-                Log.v("ingresando User y Pass", user + " : " + pass);
-                // Set the username and password for creating a Basic Auth request
-                HttpAuthentication authHeader = new HttpBasicAuthentication(user, pass);
-                HttpHeaders requestHeaders = new HttpHeaders();
-                requestHeaders.setAuthorization(authHeader);
-                HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
-
-                Log.v("ingresando URL",url);
-                RestTemplate restTemplate = new RestTemplate();
-
-                MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-                converter.getObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-                restTemplate.getMessageConverters().add(converter);
-                // Make the HTTP GET request to the Basic Auth protected URL
-                ResponseEntity<Equipos> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Equipos.class);
-                Equipos equipos = response.getBody();
-
-                Log.v("listado Equipos contiene", equipos.getResult().getValue().size() +"");
-                int arraySize = equipos.getResult().getValue().size();
-                RestLink[] equiposArray = new RestLink[arraySize];
-                for (int i=0; i< arraySize;i++){
-                    equiposArray[i] = equipos.getResult().getValue().get(i);
-                    Log.v("Equipo Encontrado", equiposArray[i].getTitle());
-                }
-                return equipos;
-
-            } catch (Exception e) {
-                Log.e("main_activity", e.getMessage(), e);
-            }
-
-            return null;
-        }
     }
 
     private void mostrarMensaje(CharSequence text) {

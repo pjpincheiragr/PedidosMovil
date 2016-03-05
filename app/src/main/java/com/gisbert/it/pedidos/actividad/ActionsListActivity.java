@@ -27,16 +27,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.concurrent.ExecutionException;
 
 
-import com.gisbert.it.pedidos.serv.Equipos;
 import com.gisbert.it.pedidos.R;
-import com.gisbert.it.pedidos.dom.Equipo;
 import com.gisbert.it.pedidos.dom.Actions;
-import com.gisbert.it.pedidos.serv.Equipos;
-import com.gisbert.it.pedidos.dom.IsisService;
-import com.gisbert.it.pedidos.serv.Greeting;
-import com.gisbert.it.pedidos.serv.RestLink;
-import com.gisbert.it.pedidos.serv.RestLinks;
-import com.gisbert.it.pedidos.serv.Services;
 
 public class ActionsListActivity extends Activity {
     String serviceurl;

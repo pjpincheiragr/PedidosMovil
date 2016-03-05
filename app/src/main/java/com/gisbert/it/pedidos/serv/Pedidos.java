@@ -1,10 +1,13 @@
 package com.gisbert.it.pedidos.serv;
+
 import java.util.List;
 
 /**
- * Created by Pablo Pincheira on 15/12/2015.
+ * Created by Pablo Pincheira on 05/03/2016.
  */
-public class FallaEquipoTecnicos {
+public class Pedidos {
+
+
     List<RestLink> links;
     Result result;
 

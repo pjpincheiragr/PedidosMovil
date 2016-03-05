@@ -13,41 +13,13 @@
         android:layout_weight="1">
 
 
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/imageButton2"
-            android:layout_weight="1"
-            android:onClick="onClickButton_EquipoReparado"
-            android:adjustViewBounds="false"
-            android:src="@mipmap/ic_launcher"
-            android:clickable="false"
-            android:scaleType="fitCenter"
-            android:tintMode="src_in"
-            android:padding="@dimen/abc_action_bar_default_padding_end_material" />
-
-
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/imageButton4"
-            android:layout_weight="1.01"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher"
-            android:onClick="onClickButton_EquipoSinRevisar"
-            android:padding="@dimen/abc_action_bar_default_padding_end_material" />
-
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:id="@+id/imageButton7"
             android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher"
-            android:onClick="onClickButton_EquipoSinArreglo"
-            android:padding="@dimen/abc_action_bar_default_padding_start_material" />
+            android:scaleType="center"
+            android:onClick="onClickButton_Pedidos" />
 
     </LinearLayout>
 
@@ -57,22 +29,12 @@
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="1">
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/imageButton"
-            android:layout_weight="1"
-            android:onClick="onClickButton_ListClientes"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher"
-            android:padding="@dimen/abc_action_bar_default_padding_end_material" />
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:id="@+id/imageButton3"
             android:layout_weight="1"
-            android:src="@mipmap/ic_launcher"
             android:scaleType="fitCenter"
             android:onClick="onClickButton_ListTecnicos"
             android:padding="@dimen/abc_action_bar_default_padding_end_material" />
@@ -83,21 +45,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/imageButton5"
-            android:layout_weight="1"
-            android:src="@mipmap/ic_launcher"
-            android:scaleType="fitCenter"
-            android:onClick="onClickButton_OrdenServicio"
-            android:padding="@dimen/abc_action_bar_default_padding_start_material" />
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:id="@+id/imageButton8"
             android:layout_weight="1"
-            android:src="@mipmap/ic_launcher"
             android:scaleType="fitCenter"
             android:onClick="onClickButton_Reparacion"
             android:contentDescription="Reparaciones"

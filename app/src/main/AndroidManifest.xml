@@ -43,7 +43,6 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.PRINCIPAL_LIST" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -56,127 +55,26 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".actividad.EquipoListActivity"
-            android:label="Equipos" >
-            <intent-filter>
-                <action android:name="android.intent.action.EQUIPO_LIST" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".actividad.EquipoDetalleActivity"
-            android:label="EquipoDetalle" >
-            <intent-filter>
-                <action android:name="android.intent.action.EQUIPO_DETALLE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".actividad.ClienteListActivity"
-            android:label="Cliente" >
-            <intent-filter>
-                <action android:name="android.intent.action.CLIENTE_LIST" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
         <activity
-            android:name=".actividad.OrdenServicioListActivity"
+            android:name=".actividad.PedidoListActivity"
             android:label="OrdenServicio" >
             <intent-filter>
-                <action android:name="android.intent.action.ORDENSERVICIO_LIST" />
+                <action android:name="android.intent.action.PEDIDOS_LIST" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <activity
-            android:name=".actividad.OrdenServicioBusListActivity"
-            android:label="OrdenServicio" >
-            <intent-filter>
-                <action android:name="android.intent.action.ORDENSERVICIO_BUS_LIST" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".actividad.OrdenDetalleActivity"
+            android:name=".actividad.PedidoDetalleActivity"
             android:label="RepuestoDetalle" >
             <intent-filter>
-                <action android:name="android.intent.action.ORDEN_DETALLE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".actividad.ClienteDetalleActivity"
-            android:label="ClienteDetalle" >
-            <intent-filter>
-                <action android:name="android.intent.action.CLIENTE_DETALLE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".actividad.TecnicoDetalleActivity"
-            android:label="TecnicoDetalle" >
-            <intent-filter>
-                <action android:name="android.intent.action.TECNICO_DETALLE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".actividad.TecnicoListActivity"
-            android:label="Tecnico" >
-            <intent-filter>
-                <action android:name="android.intent.action.TECNICO_LIST" />
+                <action android:name="android.intent.action.PEDIDO_DETALLE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".actividad.RepuestoDetalleActivity"
-            android:label="RepuestoDetalle" >
-            <intent-filter>
-                <action android:name="android.intent.action.REPUESTO_DETALLE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".actividad.RepuestoListActivity"
-            android:label="Repuesto" >
-            <intent-filter>
-                <action android:name="android.intent.action.REPUESTO_LIST" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".actividad.ReparacionDetalleActivity"
-            android:label="RepuestoDetalle" >
-            <intent-filter>
-                <action android:name="android.intent.action.REPARACION_DETALLE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".actividad.ReparacionBusListActivity"
-            android:label="Repuesto" >
-            <intent-filter>
-                <action android:name="android.intent.action.REPARACION_LIST" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
     </application>
 </manifest>

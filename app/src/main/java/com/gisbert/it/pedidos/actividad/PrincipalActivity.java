@@ -60,20 +60,9 @@ public class PrincipalActivity extends Activity {
     }
 
 
-    public void onClickButton_Equipos(View view) {
+    public void onClickButton_Pedidos(View view) {
 
-        Intent intent = new Intent("android.intent.action.ORDENSERVICIO_LIST");
-
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-
-    public void onClickButton_Reparacion(View view) {
-
-        Intent intent = new Intent("android.intent.action.REPARACION_LIST");
+        Intent intent = new Intent("android.intent.action.PEDIDOS_LIST");
 
         intent.putExtra("url", url);
         intent.putExtra("user", user);
@@ -82,98 +71,9 @@ public class PrincipalActivity extends Activity {
         startActivity(intent);
     }
 
-    public void onClickButton_OrdenServicio(View view) {
+    public void onClickButton_RUTAS(View view) {
 
-        Intent intent = new Intent("android.intent.action.ORDENSERVICIO_BUS_LIST");
-
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-    public void onClickButton_EquipoSinArreglo(View view) {
-
-        /*Intent intent = new Intent("android.intent.action.EQUIPO_SR_LIST");*/
-        Intent intent = new Intent("android.intent.action.ORDENSERVICIO_LIST");
-        intent.putExtra("estado","SIN_ARREGLO");
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-    public void onClickButton_EquipoReparado(View view) {
-
-        /*Intent intent = new Intent("android.intent.action.EQUIPO_SR_LIST");*/
-        Intent intent = new Intent("android.intent.action.ORDENSERVICIO_LIST");
-        intent.putExtra("estado","REPARADO");
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-
-    public void onClickButton_EquipoSinRevisar(View view) {
-
-        /*Intent intent = new Intent("android.intent.action.EQUIPO_SR_LIST");*/
-        Intent intent = new Intent("android.intent.action.ORDENSERVICIO_LIST");
-        intent.putExtra("estado","SIN_REVISAR");
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-
-
-    public void onClickButton_TecnicoPago(View view) {
-
-        Intent intent = new Intent("android.intent.action.TECNICOPAGO_LIST");
-
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-    public void onClickButton_Ingresos(View view) {
-
-        Intent intent = new Intent("android.intent.action.INGRESOS_LIST");
-
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-    public void onClickButton_ListClientes(View  view) {
-
-        Intent intent = new Intent("android.intent.action.CLIENTE_LIST");
-
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-
-    public void onClickButton_ListTecnicos(View  view) {
-
-        Intent intent = new Intent("android.intent.action.TECNICO_LIST");
-
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-
-
-    public void onClickButton_prueba(View  view) {
-
-        Intent intent = new Intent("android.intent.action.EQUIPOS2");
+        Intent intent = new Intent("android.intent.action.RUTAS_LIST");
 
         intent.putExtra("url", url);
         intent.putExtra("user", user);

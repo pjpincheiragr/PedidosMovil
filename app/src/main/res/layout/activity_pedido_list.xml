@@ -4,7 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.gisbert.it.pedidos.actividad.OrdenServicioListActivity"
+    tools:context=".actividad.PedidoListActivity"
 
     >
 
@@ -20,6 +20,5 @@
         android:textColor="#FF267F00"
         android:textStyle="bold"
         android:cacheColorHint="#FFDAFF7F"
-
-       />
+        />
 </RelativeLayout>

@@ -25,4 +25,5 @@ public class RestLinks {
     public void setExtensions(Object extensions) {
         this.extensions = extensions;
     }
+
 }
