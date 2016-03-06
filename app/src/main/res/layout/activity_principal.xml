@@ -13,13 +13,18 @@
         android:layout_weight="1">
 
 
-        <ImageButton
+        <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:id="@+id/imageButton7"
             android:layout_weight="1"
             android:scaleType="center"
-            android:onClick="onClickButton_Pedidos" />
+            android:onClick="onClickButton_Pedidos"
+            android:background="#fa730c"
+            android:layout_marginTop="20dp"
+            android:text="@string/pedidos"
+            android:layout_marginBottom="20dp"
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 
@@ -30,14 +35,20 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1">
 
-        <ImageButton
+        <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:id="@+id/imageButton3"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:onClick="onClickButton_ListTecnicos"
-            android:padding="@dimen/abc_action_bar_default_padding_end_material" />
+            android:onClick="onClickButton_PedidosItem"
+            android:padding="@dimen/abc_action_bar_default_padding_end_material"
+            android:background="#fa730c"
+            android:layout_marginTop="20dp"
+            android:text="@string/pedidos_items"
+            android:layout_marginBottom="20dp"
+            android:textColor="#ffffff"
+            android:nestedScrollingEnabled="false" />
     </LinearLayout>
 
     <LinearLayout
@@ -46,15 +57,20 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <ImageButton
+        <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:id="@+id/imageButton8"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:onClick="onClickButton_Reparacion"
-            android:contentDescription="Reparaciones"
-            android:padding="@dimen/abc_action_bar_default_padding_start_material" />
+            android:onClick="onClickButton_Otro"
+            android:padding="@dimen/abc_action_bar_default_padding_start_material"
+            android:background="#fa730c"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/Contenido"
+            android:textColor="#ffffff"
+            android:nestedScrollingEnabled="true" />
 
 
     </LinearLayout>

@@ -24,6 +24,7 @@ public class Pedido {
         DatoString valor;
         DatoString estado;
         DatoSucursal sucursal;
+        DatoString urgencia;
         DatoString observacion;
         DatoString activo;
 
@@ -65,6 +66,13 @@ public class Pedido {
             this.sucursal = sucursal;
         }
 
+
+        public DatoString getUrgencia() {
+            return urgencia;
+        }
+        public void setUrgencia(DatoString urgencia) {
+            this.urgencia = urgencia;
+        }
 
         public DatoString getObservacion() {
             return observacion;
@@ -116,18 +124,26 @@ public class Pedido {
         }
         public class DatoProveedor {
 
-            DatoHref value;
-            public DatoHref getValue() {return value;}
-            public void setValue(DatoHref value) {
+            DatoTitle value;
+
+            public DatoTitle getValue() {
+                return value;
+            }
+
+            public void setValue(DatoTitle value) {
                 this.value = value;
             }
 
-            public class DatoHref {
-                String href;
+            public class DatoTitle {
+                String title;
 
-                public String getHref() { return href;}
+                public String getTitle() {
+                    return title;
+                }
 
-                public void setHref(String href) {this.href = href;}
+                public void setTitle(String title) {
+                    this.title = title;
+                }
             }
         }
 

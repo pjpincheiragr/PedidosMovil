@@ -12,7 +12,7 @@ android:background="@color/Fondo">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="User"
+    android:text="@string/user"
     android:id="@+id/textView"
     android:layout_alignParentTop="true"
     android:layout_alignParentLeft="true"
@@ -23,7 +23,7 @@ android:background="@color/Fondo">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="Pass"
+    android:text="@string/pass"
     android:id="@+id/textView2"
     android:layout_below="@+id/editText_user"
     android:layout_alignParentLeft="true"
@@ -41,7 +41,8 @@ android:background="@color/Fondo">
     android:layout_alignParentEnd="true"
     android:maxLines="1"
     android:maxLength="50"
-    android:textColor="@color/TextoUsuario" />
+    android:textColor="@color/TextoUsuario"
+    android:inputType="text" />
 
 <EditText
     android:layout_width="wrap_content"
@@ -61,7 +62,7 @@ android:background="@color/Fondo">
 <CheckBox
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Save pass"
+    android:text="@string/save_pass"
     android:id="@+id/checkBox_save"
     android:checked="false"
 
@@ -76,7 +77,7 @@ android:background="@color/Fondo">
 <Button
     android:layout_width="120dp"
     android:layout_height="wrap_content"
-    android:text="Conectar"
+    android:text="@string/connect"
     android:id="@+id/button_connect"
     android:background="@color/FondoBoton"
     android:layout_below="@+id/checkBox_save"

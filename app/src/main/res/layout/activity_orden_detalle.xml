@@ -15,258 +15,272 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/orden_numero_label"
-        android:id="@+id/textView_orden_numero_label"
+        android:text="@string/tipo_pedido"
+        android:id="@+id/tipo_pedido_label"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@color/Etiquetas" />
+        android:textColor="@color/Etiquetas"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView_orden_numero"
-        android:layout_toEndOf="@+id/textView_orden_tecnico_label"
-        android:layout_above="@+id/textView_orden_tecnico_label"
-        android:layout_toRightOf="@+id/textView_orden_tecnico_label"
-        android:layout_marginLeft="30dp"
+        android:id="@+id/tipo_pedido"
+        android:layout_toEndOf="@+id/proveedor_pedido_label"
+        android:layout_above="@+id/proveedor_pedido_label"
+        android:layout_toRightOf="@+id/proveedor_pedido_label"
+        android:layout_marginLeft="40dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/TextoUsuario" />
+        android:textColor="@color/TextoUsuario"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/orden_tecnico_label"
-        android:id="@+id/textView_orden_tecnico_label"
-        android:layout_below="@+id/textView_orden_numero_label"
+        android:text="@string/proveedor_label"
+        android:id="@+id/proveedor_pedido_label"
+        android:layout_below="@+id/tipo_pedido_label"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas" />
+        android:textColor="@color/Etiquetas"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView_orden_tecnico"
+        android:id="@+id/proveedor_pedido"
 
         android:linksClickable="true"
-        android:layout_toEndOf="@+id/textView_orden_tecnico_label"
-        android:layout_alignTop="@+id/textView_orden_tecnico_label"
-        android:layout_alignRight="@+id/textView_orden_numero"
-        android:layout_alignEnd="@+id/textView_orden_numero"
+        android:layout_toEndOf="@+id/proveedor_pedido_label"
+        android:layout_alignTop="@+id/proveedor_pedido_label"
+        android:layout_alignRight="@+id/tipo_pedido"
+        android:layout_alignEnd="@+id/tipo_pedido"
         android:textColor="@color/TextoUsuario"
-        android:layout_alignLeft="@+id/textView_orden_numero"
-        android:layout_alignStart="@+id/textView_orden_numero"
+        android:layout_alignLeft="@+id/tipo_pedido"
+        android:layout_alignStart="@+id/tipo_pedido"
         android:onClick="onClick_Tecnico"
-        android:backgroundTintMode="src_over" />
+        android:backgroundTintMode="src_over"
+        android:textSize="15sp" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/orden_cliente_label"
-        android:id="@+id/textView_orden_cliente_label"
-        android:layout_below="@+id/textView_orden_tecnico_label"
+        android:text="@string/vendedor_pedido_label"
+        android:id="@+id/vendedor_pedido_label"
+        android:layout_below="@+id/proveedor_pedido_label"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas" />
+        android:textColor="@color/Etiquetas"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView_orden_cliente"
+        android:id="@+id/vendedor_pedido"
         android:linksClickable="true"
-        android:layout_toEndOf="@+id/textView_orden_cliente_label"
-        android:layout_alignTop="@+id/textView_orden_cliente_label"
-        android:layout_alignRight="@+id/textView_orden_tecnico"
-        android:layout_alignEnd="@+id/textView_orden_tecnico"
+        android:layout_toEndOf="@+id/vendedor_pedido_label"
+        android:layout_alignTop="@+id/vendedor_pedido_label"
+        android:layout_alignRight="@+id/proveedor_pedido"
+        android:layout_alignEnd="@+id/proveedor_pedido"
         android:textColor="@color/TextoUsuario"
-        android:layout_alignLeft="@+id/textView_orden_tecnico"
-        android:layout_alignStart="@+id/textView_orden_tecnico"
+        android:layout_alignLeft="@+id/proveedor_pedido"
+        android:layout_alignStart="@+id/proveedor_pedido"
         android:onClick="onClick_Cliente"
         android:textColorLink="@color/Fondo"
-        android:textIsSelectable="true" />
+        android:textIsSelectable="true"
+        android:textSize="15sp" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/orden_equipo_label"
-        android:id="@+id/textView_orden_equipo_label"
-        android:layout_below="@+id/textView_orden_cliente"
+        android:text="@string/valor_pedido_label"
+        android:id="@+id/valor_pedido"
+        android:layout_below="@+id/vendedor_pedido"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas" />
+        android:textColor="@color/Etiquetas"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textView_orden_equipo"
-        android:layout_alignBottom="@+id/textView_orden_equipo_label"
-        android:layout_alignLeft="@+id/textView_orden_cliente"
-        android:layout_alignStart="@+id/textView_orden_cliente"
-        android:layout_alignRight="@+id/textView_orden_cliente"
-        android:layout_alignEnd="@+id/textView_orden_cliente"
+        android:layout_alignBottom="@+id/valor_pedido"
+        android:layout_alignLeft="@+id/vendedor_pedido"
+        android:layout_alignStart="@+id/vendedor_pedido"
+        android:layout_alignRight="@+id/vendedor_pedido"
+        android:layout_alignEnd="@+id/vendedor_pedido"
         android:textColor="@color/TextoUsuario"
-        android:onClick="onClick_Equipos" />
+        android:onClick="onClick_Equipos"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/orden_fechaHora_label"
-        android:id="@+id/textView_orden_fechaHora_label"
-        android:layout_below="@+id/textView_orden_equipo_label"
+        android:text="@string/estado_pedido_label"
+        android:id="@+id/estado_pedido_label"
+        android:layout_below="@+id/valor_pedido"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas" />
+        android:textColor="@color/Etiquetas"
+        android:textIsSelectable="false"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView_orden_fechaHora"
-        android:layout_alignBottom="@+id/textView_orden_fechaHora_label"
+        android:id="@+id/estado_pedido"
+        android:layout_alignBottom="@+id/estado_pedido_label"
         android:layout_alignLeft="@+id/textView_orden_equipo"
         android:layout_alignStart="@+id/textView_orden_equipo"
         android:layout_alignRight="@+id/textView_orden_equipo"
         android:layout_alignEnd="@+id/textView_orden_equipo"
-        android:textColor="@color/TextoUsuario" />
+        android:textColor="@color/TextoUsuario"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/orden_falla_label"
-        android:id="@+id/textView_orden_falla_label"
-        android:layout_below="@+id/textView_orden_fechaHora_label"
+        android:text="@string/sucursal_pedido_label"
+        android:id="@+id/sucursal_pedido_label"
+        android:layout_below="@+id/estado_pedido_label"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas" />
+        android:textColor="@color/Etiquetas"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView_orden_falla"
-
-
-        android:layout_alignTop="@+id/textView_orden_falla_label"
-
-
-        android:layout_alignLeft="@+id/textView_orden_fechaHora"
-        android:layout_alignStart="@+id/textView_orden_fechaHora"
-        android:layout_alignRight="@+id/textView_orden_fechaHora"
-        android:layout_alignEnd="@+id/textView_orden_fechaHora"
+        android:id="@+id/sucursal_pedido"
+        android:layout_alignTop="@+id/sucursal_pedido_label"
+        android:layout_alignLeft="@+id/estado_pedido"
+        android:layout_alignStart="@+id/estado_pedido"
+        android:layout_alignRight="@+id/estado_pedido"
+        android:layout_alignEnd="@+id/estado_pedido"
         android:singleLine="false"
         android:minLines="2"
         android:maxLines="10"
-        android:textColor="@color/TextoUsuario" />
+        android:textColor="@color/TextoUsuario"
+        android:layout_alignBottom="@+id/sucursal_pedido_label"
+        android:textSize="15sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/orden_importe_label"
-        android:id="@+id/textView_orden_importe_label"
-        android:layout_below="@+id/textView_orden_falla"
+        android:text="@string/urgencia_pedido_label"
+        android:id="@+id/urgencia_pedido_label"
+        android:layout_below="@+id/sucursal_pedido"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas" />
+        android:textColor="@color/Etiquetas"
+        android:textIsSelectable="false"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView_orden_importe"
-        android:layout_alignBottom="@+id/textView_orden_importe_label"
-        android:layout_alignLeft="@+id/textView_orden_falla"
-        android:layout_alignStart="@+id/textView_orden_falla"
-        android:layout_alignRight="@+id/textView_orden_falla"
-        android:layout_alignEnd="@+id/textView_orden_falla"
-        android:textColor="@color/TextoUsuario" />
+        android:id="@+id/urgencia_pedido"
+        android:layout_alignBottom="@+id/urgencia_pedido_label"
+        android:layout_alignLeft="@+id/sucursal_pedido"
+        android:layout_alignStart="@+id/sucursal_pedido"
+        android:layout_alignRight="@+id/sucursal_pedido"
+        android:layout_alignEnd="@+id/sucursal_pedido"
+        android:textColor="@color/TextoUsuario"
+        android:textIsSelectable="false"
+        android:textSize="15sp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/orden_comision_label"
-        android:id="@+id/textView_orden_comision_label"
-        android:layout_below="@+id/textView_orden_importe_label"
+        android:text="@string/fecha_hora"
+        android:id="@+id/timestamp_pedido_label"
+        android:layout_below="@+id/urgencia_pedido_label"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas" />
+        android:textColor="@color/Etiquetas"
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView_orden_comision"
-        android:layout_alignBottom="@+id/textView_orden_comision_label"
-        android:layout_alignLeft="@+id/textView_orden_importe"
-        android:layout_alignStart="@+id/textView_orden_importe"
-        android:layout_alignRight="@+id/textView_orden_importe"
-        android:layout_alignEnd="@+id/textView_orden_importe"
-        android:textColor="@color/TextoUsuario" />
+        android:id="@+id/timestamp_pedido"
+        android:textColor="@color/TextoUsuario"
+        android:textIsSelectable="false"
+        android:textSize="15sp"
+        android:layout_toEndOf="@+id/orservaciones_pedido_label"
+        android:layout_alignTop="@+id/timestamp_pedido_label"
+        android:layout_alignRight="@+id/sucursal_pedido"
+        android:layout_alignEnd="@+id/sucursal_pedido"
+        android:layout_alignLeft="@+id/sucursal_pedido"
+        android:layout_alignStart="@+id/sucursal_pedido" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/orden_estado_label"
-        android:id="@+id/textView_orden_estado_label"
-        android:layout_below="@+id/textView_orden_comision_label"
+        android:text="@string/observaciones_pedido_label"
+        android:id="@+id/orservaciones_pedido_label"
+        android:layout_below="@+id/timestamp_pedido_label"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas" />
+        android:textColor="@color/Etiquetas"
+        android:textSize="15sp" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView_orden_estado"
-        android:layout_alignBottom="@+id/textView_orden_estado_label"
-        android:layout_alignLeft="@+id/textView_orden_comision"
-        android:layout_alignStart="@+id/textView_orden_comision"
-        android:layout_alignRight="@+id/textView_orden_comision"
-        android:layout_alignEnd="@+id/textView_orden_comision"
-        android:textColor="@color/TextoUsuario" />
+        android:id="@+id/observaciones_pedido"
+        android:singleLine="false"
+        android:minLines="2"
+        android:maxLines="10"
+        android:textColor="@color/TextoUsuario"
+        android:layout_toRightOf="@+id/orservaciones_pedido_label"
+        android:layout_alignTop="@+id/orservaciones_pedido_label"
+        android:textSize="15sp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignRight="@+id/timestamp_pedido"
+        android:layout_alignEnd="@+id/timestamp_pedido"
+        android:layout_above="@+id/ver_items_button"
+        android:layout_marginBottom="10dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="1500dp"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/orden_garantia_label"
-        android:id="@+id/textView_orden_garantia_label"
-        android:layout_below="@+id/textView_orden_estado_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView_orden_garantia"
-        android:layout_alignBottom="@+id/textView_orden_garantia_label"
-        android:layout_alignLeft="@+id/textView_orden_estado"
-        android:layout_alignStart="@+id/textView_orden_estado"
-        android:layout_alignRight="@+id/textView_orden_estado"
-        android:layout_alignEnd="@+id/textView_orden_estado"
-        android:textColor="@color/TextoUsuario" />
+        android:text="@string/ver_items"
+        android:id="@+id/ver_items_button"
+        android:background="#ff7809"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:onClick="onClickButton_VerItems" />
 
 </RelativeLayout>

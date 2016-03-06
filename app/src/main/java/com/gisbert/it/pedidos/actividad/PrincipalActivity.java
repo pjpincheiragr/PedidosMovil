@@ -71,6 +71,18 @@ public class PrincipalActivity extends Activity {
         startActivity(intent);
     }
 
+    public void onClickButton_PedidosItem(View view) {
+
+        Intent intent = new Intent("android.intent.action.PEDIDOS_ITEM_LIST");
+
+        intent.putExtra("url", url);
+        intent.putExtra("user", user);
+        intent.putExtra("pass", pass);
+
+        startActivity(intent);
+    }
+
+
     public void onClickButton_RUTAS(View view) {
 
         Intent intent = new Intent("android.intent.action.RUTAS_LIST");

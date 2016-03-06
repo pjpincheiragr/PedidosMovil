@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.gisbert.it.pedidos.R;
+import com.gisbert.it.pedidos.serv.PedidoItems;
 import com.gisbert.it.pedidos.serv.Pedidos;
 import com.gisbert.it.pedidos.serv.RestLink;
 
@@ -26,7 +27,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -42,75 +42,44 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Created by Pablo Pincheira on 08/12/2015.
+ * Created by Juli on 6/3/2016.
  */
-public class PedidoListActivity extends Activity {
-    /**
-     @Override
-     protected void onCreate(Bundle savedInstanceState) {
-     super.onCreate(savedInstanceState);
-     setContentView(R.layout.activity_equipo_list);
-     }
-
-     @Override
-     public boolean onCreateOptionsMenu(Menu menu) {
-     // Inflate the menu; this adds items to the action bar if it is present.
-     getMenuInflater().inflate(R.menu.menu_equipo_list, menu);
-     return true;
-     }
-
-     @Override
-     public boolean onOptionsItemSelected(MenuItem item) {
-     // Handle action bar item clicks here. The action bar will
-     // automatically handle clicks on the Home/Up button, so long
-     // as you specify a parent activity in AndroidManifest.xml.
-     int id = item.getItemId();
-
-     //noinspection SimplifiableIfStatement
-     if (id == R.id.action_settings) {
-     return true;
-     }
-
-     return super.onOptionsItemSelected(item);
-     }
-
-     **/
-
+public class PedidoItemListActivity extends Activity{
     String url;
     String user;
     String pass;
     String estado;
-    Pedidos pedidos;
+    PedidoItems pedidos;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido_list);
 
         ListView listview = (ListView) findViewById(R.id.listView_equipment);
 
         Intent intent = getIntent();
-        url =  intent.getStringExtra("url")+ "services/RepositorioPedido/actions/listAll/invoke";
+        url =  intent.getStringExtra("url")+ "/collections/pedidoItem";
         user =  intent.getStringExtra("user");
         pass =  intent.getStringExtra("pass");
         estado=intent.getStringExtra("estado");
 
         try {
-            pedidos = new FillListOfPedidosThread().execute().get();
+            pedidos = new FillListOfPedidoItemsThread().execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
 
-        List<RestLink> LinksPedidosList = null;
+        List<RestLink> LinksPedidoItemsList = null;
         final List<String> listNombres = new ArrayList<String>();
-        if ((pedidos !=null)&&(pedidos.getResult().getValue().size()!=0)) {
-            LinksPedidosList = pedidos.getResult().getValue();
+        if ((pedidos !=null)&&(pedidos.getValue().size()!=0)) {
+            LinksPedidoItemsList = pedidos.getValue();
 
             //tomar nombres de los alumnos
 
-            for (RestLink pedidoLink : LinksPedidosList) {
+            for (RestLink pedidoLink : LinksPedidoItemsList) {
                 listNombres.add(pedidoLink.getTitle());
             }
         }else mostrarMensaje("No Existen PEDIDOS");
@@ -168,9 +137,9 @@ public class PedidoListActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class FillListOfPedidosThread extends AsyncTask<Void, Void, Pedidos> {
+    private class FillListOfPedidoItemsThread extends AsyncTask<Void, Void, PedidoItems> {
         @Override
-        protected Pedidos doInBackground(Void...  params) {
+        protected PedidoItems doInBackground(Void...  params) {
             try {
 
 
@@ -194,13 +163,13 @@ public class PedidoListActivity extends Activity {
                 headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
                 UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
                 HttpEntity<?> entity = new HttpEntity<>(headers);
-                ResponseEntity<Pedidos> response = restTemplate.exchange(builder.build().encode().toUri(),HttpMethod.POST, requestEntity, Pedidos.class);
-                Pedidos pedidos = response.getBody();
-                Log.v("listado Equipos contiene", pedidos.getResult().getValue().size() +"");
-                int arraySize = pedidos.getResult().getValue().size();
+                ResponseEntity<PedidoItems> response = restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.GET, requestEntity, PedidoItems.class);
+                PedidoItems pedidos = response.getBody();
+                Log.v("listado Equipos contiene", pedidos.getValue().size() +"");
+                int arraySize = pedidos.getValue().size();
                 RestLink[] equiposArray = new RestLink[arraySize];
                 for (int i=0; i< arraySize;i++){
-                    equiposArray[i] = pedidos.getResult().getValue().get(i);
+                    equiposArray[i] = pedidos.getValue().get(i);
                     Log.v("Equipo Encontrado", equiposArray[i].getTitle());
                     Log.v("URL", equiposArray[i].getHref());
                 }

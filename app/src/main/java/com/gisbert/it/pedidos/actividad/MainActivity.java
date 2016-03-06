@@ -73,13 +73,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.v("url", config.getUrlRestful());
                 gestionConfigRepositorio.guardarConfiguracion(activity, config);
                 Intent intent = new Intent("android.intent.action.PRINCIPAL_LIST");
-
-
-                startActivity(intent);
-              /*
                 intent.putExtra("url", config.getUrlRestful());
                 intent.putExtra("user", et_user.getText().toString());
                 intent.putExtra("pass", et_pass.getText().toString());
+                startActivity(intent);
+              /*
 
                 url =  intent.getStringExtra("url")+ "services/EquipoRepositorio/actions/listarTodos/invoke";
                 user =  intent.getStringExtra("user");
