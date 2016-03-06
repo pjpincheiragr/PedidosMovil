@@ -27,18 +27,6 @@ import com.gisbert.it.pedidos.R;
 import com.gisbert.it.pedidos.dom.Pedido;
 import com.gisbert.it.pedidos.serv.Pedidos;
 import com.gisbert.it.pedidos.serv.RestLink;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
