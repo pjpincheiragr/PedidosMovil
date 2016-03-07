@@ -3,11 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="List_Clientes">CLIENTES</string>
-    <string name="List_Equipos">EQUIPOS</string>
-    <string name="List_Tecnicos">TECNICOS</string>
-    <string name="List_OrdenServicios">O.S.</string>
-    <string name="title_activity_equipo_list">EquipoListActivity</string>
+
 
 
     <string name="id_label">The ID is</string>
@@ -16,28 +12,8 @@
     <string name="content_value">[content]</string>
     <string name="action_refresh">Refresh</string>
 
-    <string name="title_activity_actions_list">ActionsListActivity</string>
-    <string name="actionlist_title">Action List</string>
-    <string name="equipo_marca_label">Marca:</string>
-    <string name="equipo_modelo_label">Modelo:</string>
-    <string name="equipo_imei_label">IMEI:</string>
-
-    <string name="button_alumno_ir_alcurso">MARCA</string>
-    <string name="alumno_ver_direccion">MODELO</string>
-    <string name="cliente_apellido_label">Apellido:</string>
-    <string name="cliente_nombre_label">Nombre:</string>
-    <string name="cliente_dni_label">DNI:</string>
-    <string name="cliente_direccion_label">Dirección:</string>
-    <string name="cliente_telefono_label">Telefono:</string>
-    <string name="cliente_email_label">Email:</string>
 
 
-    <string name="repuesto_tipoRepuesto_label">Tipo Repuesto:</string>
-    <string name="repuesto_modelo_label">Modelo:</string>
-    <string name="repuesto_descripcion_label">Descripción:</string>
-    <string name="repuesto_fechaArribo_label">fecha arribo:</string>
-    <string name="repuesto_costo_label">Costo:</string>
-    <string name="repuesto_cantidad_label">Cantidad:</string>
     <string name="user">User</string>
     <string name="pass">Password</string>
     <string name="save_pass">Save password</string>
@@ -56,4 +32,5 @@
     <string name="fecha_hora">Fecha/Hora:</string>
     <string name="observaciones_pedido_label">Observaciones:</string>
     <string name="ver_items">VER ITEMS</string>
+   <string name="pedidoDetalle_estado">ESTADO</string>
 </resources>

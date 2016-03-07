@@ -272,15 +272,34 @@
         android:layout_above="@+id/ver_items_button"
         android:layout_marginBottom="10dp" />
 
+
+
+
+
     <Button
         android:layout_width="1500dp"
         android:layout_height="wrap_content"
         android:text="@string/ver_items"
         android:id="@+id/ver_items_button"
-        android:background="#ff7809"
-        android:textColor="#ffffff"
+        android:background="@color/FondoBoton"
+        android:textColor="@color/TextoBoton"
+        android:onClick="onClickButton_VerItems"
+        android:layout_above="@+id/btn_estado"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:text="@string/pedidoDetalle_estado"
+        android:id="@+id/btn_estado"
+        android:background="@color/FondoBoton"
+        android:textColor="@color/TextoBoton"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:onClick="onClickButton_VerItems" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

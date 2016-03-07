@@ -51,7 +51,7 @@ public class PrincipalActivity extends Activity {
         title.setText( title.getText() + ": " + user);
 */
         //Captura del evento Click del boton
-        Button button_Equipment = (Button) findViewById(R.id.button_Equipment);
+        Button button_Equipment = (Button) findViewById(R.id.ibtnPedidos);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

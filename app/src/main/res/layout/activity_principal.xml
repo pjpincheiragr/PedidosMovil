@@ -16,15 +16,16 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:id="@+id/imageButton7"
+            android:id="@+id/ibtnPedidos"
             android:layout_weight="1"
             android:scaleType="center"
             android:onClick="onClickButton_Pedidos"
-            android:background="#fa730c"
+            android:background="@color/FondoBoton"
+            android:textColor="@color/TextoBoton"
             android:layout_marginTop="20dp"
             android:text="@string/pedidos"
             android:layout_marginBottom="20dp"
-            android:textColor="#ffffff" />
+             />
 
     </LinearLayout>
 
@@ -43,12 +44,13 @@
             android:scaleType="fitCenter"
             android:onClick="onClickButton_PedidosItem"
             android:padding="@dimen/abc_action_bar_default_padding_end_material"
-            android:background="#fa730c"
             android:layout_marginTop="20dp"
             android:text="@string/pedidos_items"
             android:layout_marginBottom="20dp"
-            android:textColor="#ffffff"
-            android:nestedScrollingEnabled="false" />
+            android:nestedScrollingEnabled="false"
+            android:background="@color/FondoBoton"
+            android:textColor="@color/TextoBoton"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -65,12 +67,12 @@
             android:scaleType="fitCenter"
             android:onClick="onClickButton_Otro"
             android:padding="@dimen/abc_action_bar_default_padding_start_material"
-            android:background="#fa730c"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:text="@string/Contenido"
-            android:textColor="#ffffff"
-            android:nestedScrollingEnabled="true" />
+            android:nestedScrollingEnabled="true"
+            android:background="@color/FondoBoton"
+            android:textColor="@color/TextoBoton"/>
 
 
     </LinearLayout>
