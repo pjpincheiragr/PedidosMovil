@@ -20,7 +20,7 @@
     <string name="connect">Connect</string>
     <string name="Contenido">Rutas</string>
     <string name="pedidos_items">Items Pedidos</string>
-    <string name="pedidos">Pedidos</string>
+    <string name="pedidos_activos">PEDIDOS ACTIVOS</string>
     <string name="title_activity_pedido_detalle">PedidoDetalleActivity</string>
     <string name="tipo_pedido">Tipo:</string>
     <string name="proveedor_label">Proveedor:</string>
@@ -33,4 +33,12 @@
     <string name="observaciones_pedido_label">Observaciones:</string>
     <string name="ver_items">VER ITEMS</string>
    <string name="pedidoDetalle_estado">ESTADO</string>
+    <string name="estado_tittle">ESTADO</string>
+    <string name="editar_estado">EDITAR</string>
+    <string name="pedidos_finalizados">PEDIDOS FINALIZADOS</string>
+    <string name="pedido_item_es_muestra">Es muestra:</string>
+    <string name="pedido_item_codigo">Codigo:</string>
+    <string name="pedido_item_marca">Marca:</string>
+    <string name="pedido_item_cantidad">Cantidad:</string>
+    <string name="pedido_item_editar_estado">CAMBIAR ESTADO</string>
 </resources>

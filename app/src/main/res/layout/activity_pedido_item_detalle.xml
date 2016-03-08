@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/tipo_pedido"
+        android:text="@string/pedido_item_es_muestra"
         android:id="@+id/tipo_pedido_label"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/proveedor_label"
+        android:text="@string/pedido_item_codigo"
         android:id="@+id/proveedor_pedido_label"
         android:layout_below="@+id/tipo_pedido_label"
         android:layout_alignParentLeft="true"
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/vendedor_pedido_label"
+        android:text="@string/pedido_item_marca"
         android:id="@+id/vendedor_pedido_label"
         android:layout_below="@+id/proveedor_pedido_label"
         android:layout_alignParentLeft="true"
@@ -105,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/valor_pedido_label"
+        android:text="@string/pedido_item_cantidad"
         android:id="@+id/valor_pedido"
         android:layout_below="@+id/pedido_item_marca"
         android:layout_alignParentLeft="true"
@@ -159,106 +159,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/sucursal_pedido_label"
-        android:id="@+id/sucursal_pedido_label"
-        android:layout_below="@+id/estado_pedido_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas"
-        android:textSize="15sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/sucursal_pedido"
-        android:layout_alignTop="@+id/sucursal_pedido_label"
-        android:layout_alignLeft="@+id/pedido_item_estado"
-        android:layout_alignStart="@+id/pedido_item_estado"
-        android:layout_alignRight="@+id/pedido_item_estado"
-        android:layout_alignEnd="@+id/pedido_item_estado"
-        android:singleLine="false"
-        android:minLines="2"
-        android:maxLines="10"
-        android:textColor="@color/TextoUsuario"
-        android:layout_alignBottom="@+id/sucursal_pedido_label"
-        android:textSize="15sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/urgencia_pedido_label"
-        android:id="@+id/urgencia_pedido_label"
-        android:layout_below="@+id/sucursal_pedido"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas"
-        android:textIsSelectable="false"
-        android:textSize="15sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/urgencia_pedido"
-        android:layout_alignBottom="@+id/urgencia_pedido_label"
-        android:layout_alignLeft="@+id/sucursal_pedido"
-        android:layout_alignStart="@+id/sucursal_pedido"
-        android:layout_alignRight="@+id/sucursal_pedido"
-        android:layout_alignEnd="@+id/sucursal_pedido"
-        android:textColor="@color/TextoUsuario"
-        android:textIsSelectable="false"
-        android:textSize="15sp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/fecha_hora"
-        android:id="@+id/timestamp_pedido_label"
-        android:layout_below="@+id/urgencia_pedido_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/Etiquetas"
-        android:textSize="15sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/timestamp_pedido"
-        android:textColor="@color/TextoUsuario"
-        android:textIsSelectable="false"
-        android:textSize="15sp"
-        android:layout_toEndOf="@+id/orservaciones_pedido_label"
-        android:layout_alignTop="@+id/timestamp_pedido_label"
-        android:layout_alignRight="@+id/sucursal_pedido"
-        android:layout_alignEnd="@+id/sucursal_pedido"
-        android:layout_alignLeft="@+id/sucursal_pedido"
-        android:layout_alignStart="@+id/sucursal_pedido" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/observaciones_pedido_label"
         android:id="@+id/orservaciones_pedido_label"
-        android:layout_below="@+id/timestamp_pedido_label"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
         android:textColor="@color/Etiquetas"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:layout_below="@+id/estado_pedido_label" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/observaciones_pedido"
+        android:id="@+id/pedido_item_obs"
         android:singleLine="false"
         android:minLines="2"
         android:maxLines="10"
@@ -267,32 +182,17 @@
         android:layout_alignTop="@+id/orservaciones_pedido_label"
         android:textSize="15sp"
         android:layout_marginLeft="10dp"
-        android:layout_alignRight="@+id/timestamp_pedido"
-        android:layout_alignEnd="@+id/timestamp_pedido"
-        android:layout_above="@+id/ver_items_button"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:layout_alignRight="@+id/pedido_item_estado"
+        android:layout_alignEnd="@+id/pedido_item_estado"
+        android:layout_above="@+id/btn_estado" />
 
-
-
-
-
-    <Button
-        android:layout_width="1500dp"
-        android:layout_height="wrap_content"
-        android:text="@string/ver_items"
-        android:id="@+id/ver_items_button"
-        android:background="@color/FondoBoton"
-        android:textColor="@color/TextoBoton"
-        android:onClick="onClickButton_VerItems"
-        android:layout_above="@+id/btn_estado"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/fab_margin"
-        android:text="@string/pedidoDetalle_estado"
+        android:text="@string/pedido_item_editar_estado"
         android:id="@+id/btn_estado"
         android:background="@color/FondoBoton"
         android:textColor="@color/TextoBoton"
@@ -301,6 +201,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="onClickButton_VerEstado" />
+        android:onClick="onClickButton_EditarEstado" />
 
 </RelativeLayout>

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.gisbert.it.pedidos.R;
-import com.gisbert.it.pedidos.dom.Pedido;
+import com.gisbert.it.pedidos.dom.PedidoItem;
 
 import org.springframework.http.HttpAuthentication;
 import org.springframework.http.HttpBasicAuthentication;
@@ -38,7 +38,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class PedidoDetalleActivity extends Activity {
+public class PedidoItemDetalleActivity extends Activity {
 
     /**
      * @Override protected void onCreate(Bundle savedInstanceState) {
@@ -69,23 +69,19 @@ public class PedidoDetalleActivity extends Activity {
     String user;
     String pass;
     String estado;
-    Pedido pedido;
+    PedidoItem pedidoItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedido_detalle);
+        setContentView(R.layout.activity_pedido_item_detalle);
 
-        ListView listview = (ListView) findViewById(R.id.listView_equipment);
-        TextView tipo_pedido=(TextView)findViewById(R.id.pedido_item_es_muestra);
-        TextView proveedor_pedido=(TextView)findViewById(R.id.pedido_item_codigo);
-        TextView vendedor_pedido=(TextView)findViewById(R.id.pedido_item_marca);
-        TextView valor_pedido=(TextView)findViewById(R.id.pedido_item_cantidad);
-        TextView estado_pedido=(TextView)findViewById(R.id.pedido_item_estado);
-        TextView sucursal_pedido=(TextView)findViewById(R.id.sucursal_pedido);
-        TextView urgencia_pedido=(TextView)findViewById(R.id.urgencia_pedido);
-        TextView fecha_hora_pedido=(TextView)findViewById(R.id.timestamp_pedido);
-        TextView observaciones_pedido=(TextView)findViewById(R.id.observaciones_pedido);
+        TextView muestra_pi = (TextView) findViewById(R.id.pedido_item_es_muestra);
+        TextView codigo_pi=(TextView)findViewById(R.id.pedido_item_codigo);
+        TextView marca_pi=(TextView)findViewById(R.id.pedido_item_marca);
+        TextView cantidad_pi=(TextView)findViewById(R.id.pedido_item_cantidad);
+        TextView estado_pi=(TextView)findViewById(R.id.pedido_item_estado);
+        TextView observaciones_pi=(TextView)findViewById(R.id.pedido_item_obs);
         Intent intent = getIntent();
         url =  intent.getStringExtra("link");
         user =  intent.getStringExtra("user");
@@ -93,30 +89,24 @@ public class PedidoDetalleActivity extends Activity {
         estado=intent.getStringExtra("estado");
 
         try {
-            pedido= new FillListOfPedidosThread().execute().get();
+            pedidoItem= new FillPedidoItemDetalle().execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        String tipo=pedido.getMembers().getTipo().getValue().getTitle();
-        tipo_pedido.setText(tipo);
-        String proveedor=pedido.getMembers().getProveedor().getValue().getTitle();
-        proveedor_pedido.setText(proveedor);
-        String vendedor=pedido.getMembers().getVendedor().getValue().getTitle();
-        vendedor_pedido.setText(vendedor);
-        String valor=pedido.getMembers().getValor().getValue();
-        valor_pedido.setText(valor);
-        String estado=pedido.getMembers().getEstado().getValue();
-        estado_pedido.setText(estado);
-        String sucursal=pedido.getMembers().getSucursal().getValue().getTitle();
-        sucursal_pedido.setText(sucursal);
-        String fecha_hora=pedido.getMembers().getFechaHora().getValue();
-        fecha_hora_pedido.setText(fecha_hora);
-        String observ=pedido.getMembers().getObservacion().getValue();
-        observaciones_pedido.setText(observ);
-        String urg=pedido.getMembers().getUrgencia().getValue();
-        urgencia_pedido.setText(urg);
+        String muestra_valor=pedidoItem.getMembers().getMuestra().getValue();
+        muestra_pi.setText(muestra_valor);
+        String codigo=pedidoItem.getMembers().getCodigo().getValue();
+        codigo_pi.setText(codigo);
+        String marca=pedidoItem.getMembers().getMarca().getValue().getTitle();
+        marca_pi.setText(marca);
+        String cantidad=""+(pedidoItem.getMembers().getCantidad().getValue());
+        cantidad_pi.setText(cantidad);
+        String estado=pedidoItem.getMembers().getEstado().getValue();
+        estado_pi.setText(estado);
+        String observ=pedidoItem.getMembers().getObservacion().getValue();
+        observaciones_pi.setText(observ);
 
 
     }
@@ -144,9 +134,9 @@ public class PedidoDetalleActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class FillListOfPedidosThread extends AsyncTask<Void, Void, Pedido> {
+    private class FillPedidoItemDetalle extends AsyncTask<Void, Void, PedidoItem> {
         @Override
-        protected Pedido doInBackground(Void...  params) {
+        protected PedidoItem doInBackground(Void...  params) {
             try {
 
 
@@ -170,9 +160,9 @@ public class PedidoDetalleActivity extends Activity {
                 headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
                 UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
                 HttpEntity<?> entity = new HttpEntity<>(headers);
-                ResponseEntity<Pedido> response = restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.GET, requestEntity, Pedido.class);
+                ResponseEntity<PedidoItem> response = restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.GET, requestEntity, PedidoItem.class);
                 String some=response.toString();
-                Pedido pedido = response.getBody();
+                PedidoItem pedido = response.getBody();
                 return pedido;
 
             } catch (Exception e) {
@@ -238,20 +228,9 @@ public class PedidoDetalleActivity extends Activity {
 
     }
 
-    public void onClickButton_VerItems(View view) {
+    public void onClickButton_EditarEstado(View view) {
 
-        Intent intent = new Intent("android.intent.action.PEDIDO_ITEMS_LIST");
-
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-
-    public void onClickButton_VerEstado(View view) {
-
-        Intent intent = new Intent("android.intent.action.ESTADO_PEDIDO");
+        Intent intent = new Intent("android.intent.action.EDITAR_ESTADO");
 
         intent.putExtra("url", url);
         intent.putExtra("user", user);
@@ -259,5 +238,7 @@ public class PedidoDetalleActivity extends Activity {
 
         startActivity(intent);
     }
+
+
 
 }

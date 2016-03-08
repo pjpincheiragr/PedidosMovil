@@ -82,7 +82,7 @@ public class PedidoItemListActivity extends Activity{
             for (RestLink pedidoLink : LinksPedidoItemsList) {
                 listNombres.add(pedidoLink.getTitle());
             }
-        }else mostrarMensaje("No Existen PEDIDOS");
+        }else mostrarMensaje("No Existen ITEMS");
 
         //llenar la lista
         final StableArrayAdapter adapter = new StableArrayAdapter(getBaseContext(),
@@ -96,15 +96,15 @@ public class PedidoItemListActivity extends Activity{
                                     int position, final long id) {
                 final String item = (String) parent.getItemAtPosition(position);
 
-                Log.v("nombre", pedidos.getResult().getValue().get(position).getTitle());
-                Log.v("link", pedidos.getResult().getValue().get(position).getHref());
+                Log.v("nombre", pedidos.getValue().get(position).getTitle());
+                Log.v("link", pedidos.getValue().get(position).getHref());
 
-                String urlEquipo = pedidos.getResult().getValue().get(position).getHref();
+                String urlEquipo = pedidos.getValue().get(position).getHref();
 
-                Intent newIntent = new Intent("android.intent.action.PEDIDO_DETALLE");
+                Intent newIntent = new Intent("android.intent.action.PEDIDO_ITEM_DETALLE");
                 newIntent.putExtra("user",user);
                 newIntent.putExtra("pass",pass);
-                newIntent.putExtra("link",pedidos.getResult().getValue().get(position).getHref());
+                newIntent.putExtra("link",pedidos.getValue().get(position).getHref());
 
                 startActivity(newIntent);
 

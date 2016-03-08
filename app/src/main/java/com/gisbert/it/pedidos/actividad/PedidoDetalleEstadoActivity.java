@@ -38,7 +38,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class PedidoDetalleActivity extends Activity {
+public class PedidoDetalleEstadoActivity extends Activity {
 
     /**
      * @Override protected void onCreate(Bundle savedInstanceState) {
@@ -74,49 +74,24 @@ public class PedidoDetalleActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedido_detalle);
+        setContentView(R.layout.activity_pedido_estado);
 
-        ListView listview = (ListView) findViewById(R.id.listView_equipment);
-        TextView tipo_pedido=(TextView)findViewById(R.id.pedido_item_es_muestra);
-        TextView proveedor_pedido=(TextView)findViewById(R.id.pedido_item_codigo);
-        TextView vendedor_pedido=(TextView)findViewById(R.id.pedido_item_marca);
-        TextView valor_pedido=(TextView)findViewById(R.id.pedido_item_cantidad);
-        TextView estado_pedido=(TextView)findViewById(R.id.pedido_item_estado);
-        TextView sucursal_pedido=(TextView)findViewById(R.id.sucursal_pedido);
-        TextView urgencia_pedido=(TextView)findViewById(R.id.urgencia_pedido);
-        TextView fecha_hora_pedido=(TextView)findViewById(R.id.timestamp_pedido);
-        TextView observaciones_pedido=(TextView)findViewById(R.id.observaciones_pedido);
+        TextView valor_estado=(TextView)findViewById(R.id.valor_estado);
         Intent intent = getIntent();
-        url =  intent.getStringExtra("link");
+        url =  intent.getStringExtra("url");
         user =  intent.getStringExtra("user");
         pass =  intent.getStringExtra("pass");
         estado=intent.getStringExtra("estado");
 
         try {
-            pedido= new FillListOfPedidosThread().execute().get();
+            pedido= new FillEstado().execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        String tipo=pedido.getMembers().getTipo().getValue().getTitle();
-        tipo_pedido.setText(tipo);
-        String proveedor=pedido.getMembers().getProveedor().getValue().getTitle();
-        proveedor_pedido.setText(proveedor);
-        String vendedor=pedido.getMembers().getVendedor().getValue().getTitle();
-        vendedor_pedido.setText(vendedor);
-        String valor=pedido.getMembers().getValor().getValue();
-        valor_pedido.setText(valor);
         String estado=pedido.getMembers().getEstado().getValue();
-        estado_pedido.setText(estado);
-        String sucursal=pedido.getMembers().getSucursal().getValue().getTitle();
-        sucursal_pedido.setText(sucursal);
-        String fecha_hora=pedido.getMembers().getFechaHora().getValue();
-        fecha_hora_pedido.setText(fecha_hora);
-        String observ=pedido.getMembers().getObservacion().getValue();
-        observaciones_pedido.setText(observ);
-        String urg=pedido.getMembers().getUrgencia().getValue();
-        urgencia_pedido.setText(urg);
+        valor_estado.setText(estado);
 
 
     }
@@ -144,7 +119,7 @@ public class PedidoDetalleActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class FillListOfPedidosThread extends AsyncTask<Void, Void, Pedido> {
+    private class FillEstado extends AsyncTask<Void, Void, Pedido> {
         @Override
         protected Pedido doInBackground(Void...  params) {
             try {
@@ -239,17 +214,6 @@ public class PedidoDetalleActivity extends Activity {
     }
 
     public void onClickButton_VerItems(View view) {
-
-        Intent intent = new Intent("android.intent.action.PEDIDO_ITEMS_LIST");
-
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-
-    public void onClickButton_VerEstado(View view) {
 
         Intent intent = new Intent("android.intent.action.ESTADO_PEDIDO");
 

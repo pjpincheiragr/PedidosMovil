@@ -46,9 +46,33 @@
         </intent-filter>
     </activity>
 
+    <activity android:name=".actividad.PedidoDetalleEstadoActivity" android:label="DetallePedido">
+        <intent-filter>
+            <action android:name="android.intent.action.ESTADO_PEDIDO" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
+
     <activity android:name=".actividad.PedidoDetalleActivity" android:label="RepuestoDetalle">
         <intent-filter>
             <action android:name="android.intent.action.PEDIDO_DETALLE" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
+
+    <activity android:name=".actividad.PedidoItemDetalleActivity" android:label="RepuestoDetalle">
+        <intent-filter>
+            <action android:name="android.intent.action.PEDIDO_ITEM_DETALLE" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
+
+    <activity android:name=".actividad.PedidoItemEditEstado" android:label="RepuestoDetalle">
+        <intent-filter>
+            <action android:name="android.intent.action.EDITAR_ESTADO" />
 
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
