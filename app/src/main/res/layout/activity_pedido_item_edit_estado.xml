@@ -17,7 +17,7 @@
         android:id="@+id/ver_items_button"
         android:background="@color/FondoBoton"
         android:textColor="@color/TextoBoton"
-        android:onClick="onClickButton_VerItems"
+        android:onClick="onClickButton_Editar"
         android:layout_marginBottom="71dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"

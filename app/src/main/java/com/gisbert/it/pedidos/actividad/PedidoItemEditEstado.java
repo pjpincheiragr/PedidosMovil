@@ -70,18 +70,19 @@ public class PedidoItemEditEstado extends Activity {
     String pass;
     String estado;
     Pedido pedido;
+    Spinner dropdown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido_item_edit_estado);
 
-        Spinner dropdown = (Spinner)findViewById(R.id.spinner_estado_pedido_item);
-        String[] items = new String[]{"ACTIVO", "INACTIVO"};
+        dropdown = (Spinner)findViewById(R.id.spinner_estado_pedido_item);
+        String[] items = new String[]{"ACTIVO", "RESUELTO", "FINALIZADO"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
         Intent intent = getIntent();
-        url =  intent.getStringExtra("url");
+        url =  intent.getStringExtra("url")+"/properties/estado";
         user =  intent.getStringExtra("user");
         pass =  intent.getStringExtra("pass");
         estado=intent.getStringExtra("estado");
@@ -120,9 +121,9 @@ public class PedidoItemEditEstado extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class FillEstado extends AsyncTask<Void, Void, Pedido> {
+    private class changeEstado extends AsyncTask<Void, Void, Void> {
         @Override
-        protected Pedido doInBackground(Void...  params) {
+        protected Void doInBackground(Void...  params) {
             try {
 
 
@@ -144,12 +145,10 @@ public class PedidoItemEditEstado extends Activity {
                 restTemplate.getMessageConverters().add(converter);
                 HttpHeaders headers = new HttpHeaders();
                 headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-                UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
+                UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+                        .queryParam("value","RESUELTO");
                 HttpEntity<?> entity = new HttpEntity<>(headers);
-                ResponseEntity<Pedido> response = restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.GET, requestEntity, Pedido.class);
-                String some=response.toString();
-                Pedido pedido = response.getBody();
-                return pedido;
+                ResponseEntity<String> response = restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.PUT, requestEntity,String.class);
 
             } catch (Exception e) {
                 Log.e("main_activity", e.getMessage(), e);
@@ -214,15 +213,11 @@ public class PedidoItemEditEstado extends Activity {
 
     }
 
-    public void onClickButton_VerItems(View view) {
+    public void onClickButton_Editar(View view) {
 
-        Intent intent = new Intent("android.intent.action.ESTADO_PEDIDO");
 
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
+        new changeEstado().doInBackground();
+        mostrarMensaje("EXITO");
     }
 
 }
