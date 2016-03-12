@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.view.Menu;
+import android.widget.ImageButton;
+
 import com.gisbert.it.pedidos.R;
 import com.gisbert.it.pedidos.dom.IsisService;
 import com.gisbert.it.pedidos.serv.RestLink;
@@ -37,7 +39,7 @@ public class PrincipalActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
+        setContentView(R.layout.actividad_principal);
 
         //ListView listview = (ListView) findViewById(R.id.listView_service);
 
@@ -51,7 +53,7 @@ public class PrincipalActivity extends Activity {
         title.setText( title.getText() + ": " + user);
 */
         //Captura del evento Click del boton
-        Button button_Equipment = (Button) findViewById(R.id.ibtnPedidos);
+        ImageButton button_Equipment = (ImageButton) findViewById(R.id.boton1);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

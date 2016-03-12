@@ -41,4 +41,6 @@
     <string name="pedido_item_marca">Marca:</string>
     <string name="pedido_item_cantidad">Cantidad:</string>
     <string name="pedido_item_editar_estado">CAMBIAR ESTADO</string>
+    <string name="rutas">RUTAS</string>
+    <string name="pedidos_Activos">Pedidos Activos</string>
 </resources>

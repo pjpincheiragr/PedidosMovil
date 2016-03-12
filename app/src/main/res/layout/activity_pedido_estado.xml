@@ -7,12 +7,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.gisbert.it.pedidos.actividad.OrdenDetalleActivity"
-    android:background="@color/Fondo">
+    android:background="#ffffff">
 
 
     <Button
         android:layout_width="1500dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:text="@string/editar_estado"
         android:id="@+id/ver_items_button"
         android:background="@color/FondoBoton"
@@ -29,7 +29,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/estado_tittle"
         android:id="@+id/estado_tittle"
-        android:textColor="#ffffff"
+        android:textColor="#a69a9a"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="83dp" />
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/valor_estado"
-        android:textColor="#ffbe18"
+        android:textColor="#f9c747"
         android:layout_below="@+id/estado_tittle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="71dp" />
