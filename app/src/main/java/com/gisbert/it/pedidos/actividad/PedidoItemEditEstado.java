@@ -48,7 +48,7 @@ public class PedidoItemEditEstado extends Activity {
      * @Override public boolean onCreateOptionsMenu(Menu menu) {
      * // Inflate the menu; this adds items to the action bar if it is present.
      * getMenuInflater().inflate(R.menu.menu_equipo_list, menu);
-     * return true;
+     * volver true;
      * }
      * @Override public boolean onOptionsItemSelected(MenuItem item) {
      * // Handle action bar item clicks here. The action bar will
@@ -58,10 +58,10 @@ public class PedidoItemEditEstado extends Activity {
      * <p/>
      * //noinspection SimplifiableIfStatement
      * if (id == R.id.action_settings) {
-     * return true;
+     * volver true;
      * }
      * <p/>
-     * return super.onOptionsItemSelected(item);
+     * volver super.onOptionsItemSelected(item);
      * }
      **/
 

@@ -117,7 +117,7 @@ public class PrincipalActivity extends Activity {
                 // Make the HTTP GET request to the Basic Auth protected URL
                 ResponseEntity<RestLinks> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, RestLinks.class);
 
-                //return response.getBody();
+                //volver response.getBody();
 
                 RestLinks restLinks = response.getBody();
 

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.util.Log;
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final EditText et_user = (EditText)findViewById(R.id.editText_user);
         final EditText et_pass = (EditText)findViewById(R.id.editText_pass);
-        final Button button_connect = (Button)findViewById(R.id.button_connect);
+        final ImageButton button_connect = (ImageButton)findViewById(R.id.button_connect);
         final CheckBox cb_save = (CheckBox)findViewById(R.id.checkBox_save);
         final Activity activity = this;
         final GestionConfigRepositorio gestionConfigRepositorio = new GestionConfigRepositorio();

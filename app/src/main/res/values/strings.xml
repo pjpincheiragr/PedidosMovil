@@ -43,4 +43,7 @@
     <string name="pedido_item_editar_estado">CAMBIAR ESTADO</string>
     <string name="rutas">RUTAS</string>
     <string name="pedidos_Activos">Pedidos Activos</string>
+    <string name="RUTAS">RUTAS</string>
+    <string name="PEDIDOS">PEDIDOS</string>
+    <string name="ITEMS">ITEMS</string>
 </resources>

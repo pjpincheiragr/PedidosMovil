@@ -56,7 +56,7 @@ public class PedidoListActivity extends Activity {
      public boolean onCreateOptionsMenu(Menu menu) {
      // Inflate the menu; this adds items to the action bar if it is present.
      getMenuInflater().inflate(R.menu.menu_equipo_list, menu);
-     return true;
+     volver true;
      }
 
      @Override
@@ -68,10 +68,10 @@ public class PedidoListActivity extends Activity {
 
      //noinspection SimplifiableIfStatement
      if (id == R.id.action_settings) {
-     return true;
+     volver true;
      }
 
-     return super.onOptionsItemSelected(item);
+     volver super.onOptionsItemSelected(item);
      }
 
      **/
@@ -87,7 +87,7 @@ public class PedidoListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido_list);
 
-        ListView listview = (ListView) findViewById(R.id.listView_equipment);
+        ListView listview = (ListView) findViewById(R.id.list_pedidos);
 
         Intent intent = getIntent();
         url =  intent.getStringExtra("url")+ "services/RepositorioPedido/actions/listAll/invoke";
@@ -145,6 +145,10 @@ public class PedidoListActivity extends Activity {
 
     }
 
+    public void onClickButton_Salir(View view) {
+
+        finish();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/PEDIDOS"
+        android:text="@string/ITEMS"
         android:id="@+id/textView7"
         android:textColor="#ff9e30"
         android:layout_alignParentTop="true"
@@ -34,7 +34,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/list_pedidos"
+        android:id="@+id/list_items"
         android:textColor="#FF267F00"
         android:textStyle="bold"
         android:cacheColorHint="#FFDAFF7F"

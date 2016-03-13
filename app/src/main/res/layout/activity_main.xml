@@ -14,10 +14,10 @@ android:background="#ffffff">
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:text="@string/user"
     android:id="@+id/textView"
+    android:textColor="@color/Etiquetas"
     android:layout_alignParentTop="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:textColor="@color/Etiquetas" />
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="50dp" />
 
 <TextView
     android:layout_width="wrap_content"
@@ -25,10 +25,10 @@ android:background="#ffffff">
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:text="@string/pass"
     android:id="@+id/textView2"
+    android:textColor="@color/Etiquetas"
     android:layout_below="@+id/editText_user"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:textColor="@color/Etiquetas" />
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="50dp" />
 
 <EditText
     android:layout_width="wrap_content"
@@ -67,23 +67,27 @@ android:background="#ffffff">
     android:checked="false"
 
     android:textColor="@color/Etiquetas"
-    android:background="@color/Fondo"
     android:layout_below="@+id/editText_pass"
     android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginTop="20dp" />
+    android:layout_alignParentStart="true" />
 
 
-<Button
-    android:layout_width="120dp"
-    android:layout_height="wrap_content"
-    android:text="@string/connect"
-    android:id="@+id/button_connect"
-    android:background="@color/FondoBoton"
-    android:layout_below="@+id/checkBox_save"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="30dp"
-    style="@style/AppTheme"
-    android:enabled="true"
-    android:textColor="@color/TextoBoton" />
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView"
+        android:background="@mipmap/logo"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="logo" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/button_connect"
+        android:background="@drawable/salir"
+        android:layout_alignTop="@+id/checkBox_save"
+        android:layout_alignRight="@+id/editText_pass"
+        android:layout_alignEnd="@+id/editText_pass" />
+
 </RelativeLayout>

@@ -77,5 +77,13 @@
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
     </activity>
+
+    <activity android:name=".actividad.RutasListActivity" android:label="RepuestoDetalle">
+        <intent-filter>
+            <action android:name="android.intent.action.RUTAS_LIST" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
 </application>
 </manifest>

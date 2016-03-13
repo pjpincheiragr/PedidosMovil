@@ -54,9 +54,9 @@ public class PedidoItemListActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedido_list);
+        setContentView(R.layout.activity_items_list);
 
-        ListView listview = (ListView) findViewById(R.id.listView_equipment);
+        ListView listview = (ListView) findViewById(R.id.list_items);
 
         Intent intent = getIntent();
         url =  intent.getStringExtra("url")+ "/collections/pedidoItem";
@@ -213,6 +213,11 @@ public class PedidoItemListActivity extends Activity{
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
+
+    public void onClickButton_Salir(View view) {
+
+        finish();
+    }
     private class StableArrayAdapter extends ArrayAdapter<String> {
 
         HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
@@ -235,6 +240,8 @@ public class PedidoItemListActivity extends Activity{
         public boolean hasStableIds() {
             return true;
         }
+
+
 
     }
 }

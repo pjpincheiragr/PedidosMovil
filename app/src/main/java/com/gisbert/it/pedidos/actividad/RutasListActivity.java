@@ -9,14 +9,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.gisbert.it.pedidos.R;
-import com.gisbert.it.pedidos.dom.Pedido;
+import com.gisbert.it.pedidos.serv.Pedidos;
+import com.gisbert.it.pedidos.serv.RestLink;
+import com.gisbert.it.pedidos.serv.Rutas;
 
 import org.springframework.http.HttpAuthentication;
 import org.springframework.http.HttpBasicAuthentication;
@@ -34,90 +36,112 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class PedidoDetalleActivity extends Activity {
-
+/**
+ * Created by Pablo Pincheira on 08/12/2015.
+ */
+public class RutasListActivity extends Activity {
     /**
-     * @Override protected void onCreate(Bundle savedInstanceState) {
-     * super.onCreate(savedInstanceState);
-     * setContentView(R.layout.activity_equipo_list);
-     * }
-     * @Override public boolean onCreateOptionsMenu(Menu menu) {
-     * // Inflate the menu; this adds items to the action bar if it is present.
-     * getMenuInflater().inflate(R.menu.menu_equipo_list, menu);
-     * volver true;
-     * }
-     * @Override public boolean onOptionsItemSelected(MenuItem item) {
-     * // Handle action bar item clicks here. The action bar will
-     * // automatically handle clicks on the Home/Up button, so long
-     * // as you specify a parent activity in AndroidManifest.xml.
-     * int id = item.getItemId();
-     * <p/>
-     * //noinspection SimplifiableIfStatement
-     * if (id == R.id.action_settings) {
-     * volver true;
-     * }
-     * <p/>
-     * volver super.onOptionsItemSelected(item);
-     * }
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+     super.onCreate(savedInstanceState);
+     setContentView(R.layout.activity_equipo_list);
+     }
+
+     @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+     // Inflate the menu; this adds items to the action bar if it is present.
+     getMenuInflater().inflate(R.menu.menu_equipo_list, menu);
+     volver true;
+     }
+
+     @Override
+     public boolean onOptionsItemSelected(MenuItem item) {
+     // Handle action bar item clicks here. The action bar will
+     // automatically handle clicks on the Home/Up button, so long
+     // as you specify a parent activity in AndroidManifest.xml.
+     int id = item.getItemId();
+
+     //noinspection SimplifiableIfStatement
+     if (id == R.id.action_settings) {
+     volver true;
+     }
+
+     volver super.onOptionsItemSelected(item);
+     }
+
      **/
 
     String url;
     String user;
     String pass;
     String estado;
-    Pedido pedido;
+    Rutas rutas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedido_detalle);
+        setContentView(R.layout.activity_rutas_list);
 
         ListView listview = (ListView) findViewById(R.id.listView_equipment);
-        TextView tipo_pedido=(TextView)findViewById(R.id.pedido_item_es_muestra);
-        TextView proveedor_pedido=(TextView)findViewById(R.id.pedido_item_codigo);
-        TextView vendedor_pedido=(TextView)findViewById(R.id.pedido_item_marca);
-        TextView valor_pedido=(TextView)findViewById(R.id.pedido_item_cantidad);
-        TextView estado_pedido=(TextView)findViewById(R.id.pedido_item_estado);
-        TextView sucursal_pedido=(TextView)findViewById(R.id.sucursal_pedido);
-        TextView urgencia_pedido=(TextView)findViewById(R.id.urgencia_pedido);
-        TextView fecha_hora_pedido=(TextView)findViewById(R.id.timestamp_pedido);
-        TextView observaciones_pedido=(TextView)findViewById(R.id.observaciones_pedido);
+
         Intent intent = getIntent();
-        url =  intent.getStringExtra("link");
+        url =  intent.getStringExtra("url")+ "services/RepositorioRuta/actions/listAll/invoke";
         user =  intent.getStringExtra("user");
         pass =  intent.getStringExtra("pass");
         estado=intent.getStringExtra("estado");
 
         try {
-            pedido= new FillListOfPedidosThread().execute().get();
+            rutas = new FillListOfRutasThread().execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        String tipo=pedido.getMembers().getTipo().getValue().getTitle();
-        tipo_pedido.setText(tipo);
-        String proveedor=pedido.getMembers().getProveedor().getValue().getTitle();
-        proveedor_pedido.setText(proveedor);
-        String vendedor=pedido.getMembers().getVendedor().getValue().getTitle();
-        vendedor_pedido.setText(vendedor);
-        String valor=pedido.getMembers().getValor().getValue();
-        valor_pedido.setText(valor);
-        String estado=pedido.getMembers().getEstado().getValue();
-        estado_pedido.setText(estado);
-        String sucursal=pedido.getMembers().getSucursal().getValue().getTitle();
-        sucursal_pedido.setText(sucursal);
-        String fecha_hora=pedido.getMembers().getFechaHora().getValue();
-        fecha_hora_pedido.setText(fecha_hora);
-        String observ=pedido.getMembers().getObservacion().getValue();
-        observaciones_pedido.setText(observ);
-        String urg=pedido.getMembers().getUrgencia().getValue();
-        urgencia_pedido.setText(urg);
 
+        List<RestLink> LinksPedidosList = null;
+        final List<String> listNombres = new ArrayList<String>();
+        if ((rutas !=null)&&(rutas.getResult().getValue().size()!=0)) {
+            LinksPedidosList = rutas.getResult().getValue();
+
+            //tomar nombres de los alumnos
+
+            for (RestLink pedidoLink : LinksPedidosList) {
+                listNombres.add(pedidoLink.getTitle());
+            }
+        }else mostrarMensaje("No Existen RUTAS");
+
+        //llenar la lista
+        final StableArrayAdapter adapter = new StableArrayAdapter(getBaseContext(),
+                android.R.layout.simple_list_item_1, listNombres);
+        listview.setAdapter(adapter);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, final long id) {
+                final String item = (String) parent.getItemAtPosition(position);
+
+                Log.v("nombre", rutas.getResult().getValue().get(position).getTitle());
+                Log.v("link", rutas.getResult().getValue().get(position).getHref());
+
+                String urlEquipo = rutas.getResult().getValue().get(position).getHref();
+
+                Intent newIntent = new Intent("android.intent.action.RUTA_DETALLE");
+                newIntent.putExtra("user",user);
+                newIntent.putExtra("pass",pass);
+                newIntent.putExtra("link",rutas.getResult().getValue().get(position).getHref());
+
+                startActivity(newIntent);
+
+
+            }
+        });
 
     }
 
@@ -127,6 +151,11 @@ public class PedidoDetalleActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_equipo_list, menu);
         return true;
+    }
+
+    public void onClickButton_Salir(View view) {
+
+        finish();
     }
 
     @Override
@@ -144,9 +173,9 @@ public class PedidoDetalleActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class FillListOfPedidosThread extends AsyncTask<Void, Void, Pedido> {
+    private class FillListOfRutasThread extends AsyncTask<Void, Void, Rutas> {
         @Override
-        protected Pedido doInBackground(Void...  params) {
+        protected Rutas doInBackground(Void...  params) {
             try {
 
 
@@ -170,10 +199,17 @@ public class PedidoDetalleActivity extends Activity {
                 headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
                 UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
                 HttpEntity<?> entity = new HttpEntity<>(headers);
-                ResponseEntity<Pedido> response = restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.GET, requestEntity, Pedido.class);
-                String some=response.toString();
-                Pedido pedido = response.getBody();
-                return pedido;
+                ResponseEntity<Rutas> response = restTemplate.exchange(builder.build().encode().toUri(),HttpMethod.POST, requestEntity, Rutas.class);
+                Rutas rutas = response.getBody();
+                Log.v("listado rutas contiene", rutas.getResult().getValue().size() +"");
+                int arraySize = rutas.getResult().getValue().size();
+                RestLink[] equiposArray = new RestLink[arraySize];
+                for (int i=0; i< arraySize;i++){
+                    equiposArray[i] = rutas.getResult().getValue().get(i);
+                    Log.v("Ruta encontrada: ", equiposArray[i].getTitle());
+                    Log.v("URL", equiposArray[i].getHref());
+                }
+                return rutas;
 
             } catch (Exception e) {
                 Log.e("main_activity", e.getMessage(), e);
@@ -238,26 +274,5 @@ public class PedidoDetalleActivity extends Activity {
 
     }
 
-    public void onClickButton_VerItems(View view) {
-
-        Intent intent = new Intent("android.intent.action.PEDIDO_ITEMS_LIST");
-
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
-
-    public void onClickButton_VerEstado(View view) {
-
-        Intent intent = new Intent("android.intent.action.ESTADO_PEDIDO");
-
-        intent.putExtra("url", url);
-        intent.putExtra("user", user);
-        intent.putExtra("pass", pass);
-
-        startActivity(intent);
-    }
 
 }
