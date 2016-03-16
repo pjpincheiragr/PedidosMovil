@@ -9,8 +9,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -85,11 +87,17 @@ public class PedidoItemListActivity extends Activity{
         }else mostrarMensaje("No Existen ITEMS");
 
         //llenar la lista
-        final StableArrayAdapter adapter = new StableArrayAdapter(getBaseContext(),
-                android.R.layout.simple_list_item_1, listNombres);
+      /*  final StableArrayAdapter adapter = new StableArrayAdapter(getBaseContext(),
+                android.R.layout.simple_list_item_1, listNombres);*/
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item, listNombres);
         listview.setAdapter(adapter);
         listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+        /*
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+
 
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,
@@ -110,11 +118,29 @@ public class PedidoItemListActivity extends Activity{
 
 
             }
-        });
+        });*/
 
     }
+    public void Guardar()
+    {
+        setContentView(R.layout.activity_items_list);
+        ListView lv = (ListView)findViewById(R.id.list_items);
+        int count = lv.getAdapter().getCount();
 
 
+        for (int i = 0; i < count; i++)
+        {
+            ViewGroup row = (ViewGroup) lv.getChildAt(i);
+            CheckBox tvTest = (CheckBox) row.findViewById(R.id.checkedTextView1);
+            //  Get your controls from this ViewGroup and perform your task on them =)
+
+            if (tvTest.isChecked())
+            {
+                // DO SOMETHING
+            }
+
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
