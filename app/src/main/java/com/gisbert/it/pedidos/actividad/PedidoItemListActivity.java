@@ -88,7 +88,7 @@ public class PedidoItemListActivity extends Activity{
         final StableArrayAdapter adapter = new StableArrayAdapter(getBaseContext(),
                 android.R.layout.simple_list_item_1, listNombres);
         listview.setAdapter(adapter);
-
+        listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

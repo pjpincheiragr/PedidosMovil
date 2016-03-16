@@ -84,7 +84,7 @@ public class PedidoDetalleActivity extends Activity {
         TextView estado_pedido=(TextView)findViewById(R.id.pedido_item_estado);
         TextView sucursal_pedido=(TextView)findViewById(R.id.sucursal_pedido);
         TextView urgencia_pedido=(TextView)findViewById(R.id.urgencia_pedido);
-        TextView fecha_hora_pedido=(TextView)findViewById(R.id.timestamp_pedido);
+       // TextView fecha_hora_pedido=(TextView)findViewById(R.id.timestamp_pedido);
         TextView observaciones_pedido=(TextView)findViewById(R.id.observaciones_pedido);
         Intent intent = getIntent();
         url =  intent.getStringExtra("link");
@@ -112,7 +112,7 @@ public class PedidoDetalleActivity extends Activity {
         String sucursal=pedido.getMembers().getSucursal().getValue().getTitle();
         sucursal_pedido.setText(sucursal);
         String fecha_hora=pedido.getMembers().getFechaHora().getValue();
-        fecha_hora_pedido.setText(fecha_hora);
+       // fecha_hora_pedido.setText(fecha_hora);
         String observ=pedido.getMembers().getObservacion().getValue();
         observaciones_pedido.setText(observ);
         String urg=pedido.getMembers().getUrgencia().getValue();
