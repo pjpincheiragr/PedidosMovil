@@ -17,35 +17,47 @@ public class Pedido {
 
     // nested class
     public class Members{
-        DatoTipo tipo;
+        DatoString clave;
+        DatoString numeroVenta;
         DatoProveedor proveedor;
-        DatoString fechaHora;
+        DatoTipo tipo;
         DatoVendedor vendedor;
+        DatoString fechaHora;
         DatoString valor;
         DatoString estado;
-        DatoSucursal sucursal;
+        DatoString tiempoEstimado;
         DatoString urgencia;
         DatoString observacion;
-        DatoString activo;
+        DatoSucursal sucursal;
 
 
+        public DatoString getClave() { return clave;}
+        public void setClave(DatoString clave) {this.clave = clave;}
+
+        public DatoString getNumeroVenta() { return numeroVenta;}
+        public void setNumeroVenta(DatoString numeroVenta) {this.numeroVenta = numeroVenta;}
+
+
+        public DatoProveedor getProveedor() {return proveedor;}
+        public void setProveedor(DatoProveedor proveedor) {this.proveedor = proveedor;}
         public DatoTipo getTipo() {
             return tipo;
         }
         public void setTipo(DatoTipo tipo) {
             this.tipo = tipo;
         }
-        public DatoProveedor getProveedor() {return proveedor;}
-        public void setProveedor(DatoProveedor proveedor) {this.proveedor = proveedor;}
-        public DatoString getFechaHora() { return fechaHora;}
-        public void setFechaHora(DatoString fechaHora) {this.fechaHora = fechaHora;}
-
         public DatoVendedor getVendedor() {
             return vendedor;
         }
         public void setVendedor(DatoVendedor vendedor) {
             this.vendedor = vendedor;
         }
+
+        public DatoString getFechaHora() { return fechaHora;}
+        public void setFechaHora(DatoString fechaHora) {this.fechaHora = fechaHora;}
+
+
+
         public DatoString getValor() {
             return valor;
         }
@@ -58,6 +70,16 @@ public class Pedido {
         public void setEstado(DatoString estado) {
             this.estado = estado;
         }
+
+
+
+        public DatoString getTiempoEstimado() {
+            return tiempoEstimado;
+        }
+        public void setTiempoEstimado(DatoString tiempoEstimado) {
+            this.tiempoEstimado = tiempoEstimado;
+        }
+
 
         public DatoSucursal getSucursal() {
             return sucursal;
@@ -81,12 +103,7 @@ public class Pedido {
             this.observacion = observacion;
         }
 
-        public DatoString getActivo() {
-            return activo;
-        }
-        public void setActivo(DatoString activo) {
-            this.activo = activo;
-        }
+
 
         // nested classes
 

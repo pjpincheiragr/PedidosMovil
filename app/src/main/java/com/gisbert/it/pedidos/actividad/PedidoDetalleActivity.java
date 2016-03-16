@@ -111,8 +111,11 @@ public class PedidoDetalleActivity extends Activity {
         estado_pedido.setText(estado);
         String sucursal=pedido.getMembers().getSucursal().getValue().getTitle();
         sucursal_pedido.setText(sucursal);
-        String fecha_hora=pedido.getMembers().getFechaHora().getValue();
-       // fecha_hora_pedido.setText(fecha_hora);
+
+
+        /* String fecha_hora=pedido.getMembers().getFechaHora().getValue();
+        fecha_hora_pedido.setText(fecha_hora);*/
+
         String observ=pedido.getMembers().getObservacion().getValue();
         observaciones_pedido.setText(observ);
         String urg=pedido.getMembers().getUrgencia().getValue();
