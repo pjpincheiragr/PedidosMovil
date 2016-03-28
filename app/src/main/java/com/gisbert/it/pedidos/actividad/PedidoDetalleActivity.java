@@ -245,7 +245,7 @@ public class PedidoDetalleActivity extends Activity {
 
         Intent intent = new Intent("android.intent.action.PEDIDO_ITEMS_LIST");
 
-        intent.putExtra("url", url);
+        intent.putExtra("url", url+ "/collections/pedidoItem");
         intent.putExtra("user", user);
         intent.putExtra("pass", pass);
 

@@ -48,7 +48,8 @@
         android:background="@color/FondoBoton"
         android:textColor="@color/TextoBoton"
         android:layout_alignBottom="@+id/imageButton2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="guardarNuevosEstados" />
 
     <ImageButton
         android:layout_width="wrap_content"

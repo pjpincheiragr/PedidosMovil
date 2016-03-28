@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -51,21 +52,26 @@ public class PedidoItemListActivity extends Activity{
     String user;
     String pass;
     String estado;
+    String itemsList="";
+    String newUrl;
     PedidoItems pedidos;
+    ListView listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_list);
 
-        ListView listview = (ListView) findViewById(R.id.list_items);
+         listview= (ListView) findViewById(R.id.list_items);
 
         Intent intent = getIntent();
-        url =  intent.getStringExtra("url")+ "/collections/pedidoItem";
+        url =  intent.getStringExtra("url");
         user =  intent.getStringExtra("user");
         pass =  intent.getStringExtra("pass");
         estado=intent.getStringExtra("estado");
-
+        int index=url.indexOf("/objects/");
+        newUrl=url.substring(0,index)+"/services/RepositorioPedidoItem/actions/updatePedidoItemLista/invoke";
+        Log.v("salida",newUrl);
         try {
             pedidos = new FillListOfPedidoItemsThread().execute().get();
         } catch (InterruptedException e) {
@@ -121,25 +127,45 @@ public class PedidoItemListActivity extends Activity{
         });*/
 
     }
-    public void Guardar()
+
+    public void guardarNuevosEstados(View view)
     {
-        setContentView(R.layout.activity_items_list);
-        ListView lv = (ListView)findViewById(R.id.list_items);
-        int count = lv.getAdapter().getCount();
-
-
+        int count = listview.getAdapter().getCount();
+        boolean check=false;
         for (int i = 0; i < count; i++)
         {
-            ViewGroup row = (ViewGroup) lv.getChildAt(i);
-            CheckBox tvTest = (CheckBox) row.findViewById(R.id.checkedTextView1);
+            if(check)
+                itemsList=itemsList+"&";
+            check=false;
+            CheckedTextView row = (CheckedTextView) listview.getChildAt(i);
+            CheckedTextView tvTest = (CheckedTextView) row.findViewById(R.id.checkedTextView1);
             //  Get your controls from this ViewGroup and perform your task on them =)
-
             if (tvTest.isChecked())
             {
+                check=true;
+                String tittle=(String) tvTest.getText();
+                itemsList=itemsList+tittle.charAt(0);
                 // DO SOMETHING
+                Log.v("lista actual", itemsList +"");
             }
 
         }
+        try {
+             new UpdateListPedidoItemThread().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        Intent intent = new Intent("android.intent.action.PEDIDO_ITEMS_LIST");
+
+        intent.putExtra("url", url);
+        intent.putExtra("user", user);
+        intent.putExtra("pass", pass);
+
+        startActivity(intent);
+
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -208,6 +234,43 @@ public class PedidoItemListActivity extends Activity{
             return null;
         }
     }
+
+    private class UpdateListPedidoItemThread extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void...  params) {
+            try {
+
+
+                //Services services = null;
+                Log.v("ingresando User y Pass", user + " : " + pass);
+                // Set the username and password for creating a Basic Auth request
+                HttpAuthentication authHeader = new HttpBasicAuthentication(user, pass);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
+
+                Log.v("ingresando URL", newUrl);
+                RestTemplate restTemplate = new RestTemplate();
+
+                MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+                converter.getObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+                restTemplate.getMessageConverters().add(converter);
+                HttpHeaders headers = new HttpHeaders();
+                headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+                UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(newUrl);
+                builder.queryParam("lista",itemsList);
+                ResponseEntity<Void> response = restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.POST, requestEntity, Void.class);
+
+            } catch (Exception e) {
+                Log.e("main_activity", e.getMessage(), e);
+            }
+
+            return null;
+        }
+    }
+
+
     public String loadJSON() {
         String json = null;
         try {
