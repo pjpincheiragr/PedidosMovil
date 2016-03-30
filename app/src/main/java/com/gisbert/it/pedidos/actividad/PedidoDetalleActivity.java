@@ -84,6 +84,8 @@ public class PedidoDetalleActivity extends Activity {
         TextView estado_pedido=(TextView)findViewById(R.id.pedido_item_estado);
         TextView sucursal_pedido=(TextView)findViewById(R.id.sucursal_pedido);
         TextView urgencia_pedido=(TextView)findViewById(R.id.urgencia_pedido);
+        TextView activo=(TextView)findViewById(R.id.activo);
+        TextView confirmado=(TextView)findViewById(R.id.confirmado);
        // TextView fecha_hora_pedido=(TextView)findViewById(R.id.timestamp_pedido);
         TextView observaciones_pedido=(TextView)findViewById(R.id.observaciones_pedido);
         Intent intent = getIntent();
@@ -111,6 +113,8 @@ public class PedidoDetalleActivity extends Activity {
         estado_pedido.setText(estado);
         String sucursal=pedido.getMembers().getSucursal().getValue().getTitle();
         sucursal_pedido.setText(sucursal);
+        String conf=pedido.getMembers().getConfirmado();
+        confirmado.setText(conf);
 
 
         /* String fecha_hora=pedido.getMembers().getFechaHora().getValue();

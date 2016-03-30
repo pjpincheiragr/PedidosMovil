@@ -47,4 +47,6 @@
     <string name="PEDIDOS">PEDIDOS</string>
     <string name="ITEMS">ITEMS</string>
     <string name="CADETES">CADETES</string>
+    <string name="Activo" >Activo:</string>
+    <string name="Confirmado">Confirmado:</string>
 </resources>

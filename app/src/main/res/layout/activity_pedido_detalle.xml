@@ -247,12 +247,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/observaciones_pedido_label"
         android:id="@+id/orservaciones_pedido_label"
-        android:layout_below="@+id/timestamp_pedido_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
         android:textColor="@color/Etiquetas"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/confirmado_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
     <TextView
@@ -265,13 +265,13 @@
         android:maxLines="10"
         android:textColor="@color/TextoUsuario"
         android:layout_toRightOf="@+id/orservaciones_pedido_label"
-        android:layout_alignTop="@+id/orservaciones_pedido_label"
         android:textSize="15sp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_alignRight="@+id/timestamp_pedido"
         android:layout_alignEnd="@+id/timestamp_pedido"
         android:layout_above="@+id/ver_items_button"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:layout_alignTop="@+id/orservaciones_pedido_label" />
 
 
 
@@ -289,6 +289,32 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/Confirmado"
+        android:id="@+id/confirmado_label"
+        android:textColor="@color/Etiquetas"
+        android:textSize="15sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/timestamp_pedido_label" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/confirmado"
+        android:textColor="@color/TextoUsuario"
+        android:textIsSelectable="false"
+        android:textSize="15sp"
+        android:layout_alignTop="@+id/confirmado_label"
+        android:layout_alignLeft="@+id/observaciones_pedido"
+        android:layout_alignStart="@+id/observaciones_pedido"
+        android:layout_alignRight="@+id/observaciones_pedido"
+        android:layout_alignEnd="@+id/observaciones_pedido" />
 
 
 </RelativeLayout>

@@ -29,6 +29,9 @@ public class Pedido {
         DatoString urgencia;
         DatoString observacion;
         DatoSucursal sucursal;
+        DatoBoolean confirmado;
+        DatoBoolean activo;
+
 
 
         public DatoString getClave() { return clave;}
@@ -71,7 +74,26 @@ public class Pedido {
             this.estado = estado;
         }
 
+        public String getActivo() {
+            if(activo.getValue())
+                return "SI";
+            else
+                return "NO";
+        }
+        public void setActivo(DatoBoolean activo) {
+            this.activo=activo;
+        }
 
+
+        public String getConfirmado() {
+            if(confirmado.getValue())
+                return "SI";
+            else
+                return "NO";
+        }
+        public void setConfirmado(DatoBoolean confirmado) {
+            this.confirmado=confirmado;
+        }
 
         public DatoString getTiempoEstimado() {
             return tiempoEstimado;
@@ -115,6 +137,18 @@ public class Pedido {
             }
 
             public void setValue(String value) {
+                this.value = value;
+            }
+        }
+
+        public class DatoBoolean {
+            boolean value;
+
+            public boolean getValue() {
+                return value;
+            }
+
+            public void setValue(boolean value) {
                 this.value = value;
             }
         }
