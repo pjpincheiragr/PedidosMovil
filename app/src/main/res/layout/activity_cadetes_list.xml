@@ -13,44 +13,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/ITEMS"
+        android:text="@string/CADETES"
         android:id="@+id/label_vendedores"
         android:textColor="#ff9e30"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton2"
+        android:background="@drawable/volver"
+        android:contentDescription="volver"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textAlignment="center" />
-
-
+        android:onClick="onClickButton_Salir" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/list_items"
+        android:id="@+id/list_cadetes"
         android:textColor="#FF267F00"
         android:textStyle="bold"
         android:cacheColorHint="#FFDAFF7F"
         android:background="#ece7e7"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
-        android:layout_above="@+id/btnGuardarItem"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-
-    <Button
-        android:id="@+id/btnGuardarItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text=" Guardar "
-        android:background="@color/FondoBoton"
-        android:textColor="@color/TextoBoton"
-        android:onClick="guardarNuevosEstados"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
+        android:layout_toRightOf="@+id/label_vendedores"
+        android:layout_toEndOf="@+id/label_vendedores"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp" />
 </RelativeLayout>

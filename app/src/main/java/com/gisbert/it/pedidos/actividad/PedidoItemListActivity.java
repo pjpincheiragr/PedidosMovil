@@ -3,9 +3,11 @@ package com.gisbert.it.pedidos.actividad;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,9 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -45,17 +50,23 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Created by Juli on 6/3/2016.
+ * Created by jotero on 6/3/2016.
  */
+
 public class PedidoItemListActivity extends Activity{
     String url;
     String user;
     String pass;
     String estado;
     String itemsList="";
+    String itemsList2="";
     String newUrl;
+    String newUrl2;
+    String urlUpdateEstadoPedido;
     PedidoItems pedidos;
     ListView listview;
+    String clave;
+    private ArrayList<RowObject> mSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -68,9 +79,12 @@ public class PedidoItemListActivity extends Activity{
         url =  intent.getStringExtra("url");
         user =  intent.getStringExtra("user");
         pass =  intent.getStringExtra("pass");
-        estado=intent.getStringExtra("estado");
+        clave=intent.getStringExtra("clave");
+        Log.v("ingresando Clave", clave);
         int index=url.indexOf("/objects/");
+        urlUpdateEstadoPedido=url.substring(0,index)+"/services/RepositorioPedido/actions/updatePedido/invoke";
         newUrl=url.substring(0,index)+"/services/RepositorioPedidoItem/actions/updatePedidoItemLista/invoke";
+        newUrl2=url.substring(0,index)+"/services/RepositorioPedidoItem/actions/updatePedidoItemListaNoResuelto/invoke";
         Log.v("salida",newUrl);
         try {
             pedidos = new FillListOfPedidoItemsThread().execute().get();
@@ -79,77 +93,44 @@ public class PedidoItemListActivity extends Activity{
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-        List<RestLink> LinksPedidoItemsList = null;
-        final List<String> listNombres = new ArrayList<String>();
+        mSource = new ArrayList<RowObject>();
+        List<RestLink> linksPedidoItemsList = null;
+        int size=pedidos.getValue().size();
         if ((pedidos !=null)&&(pedidos.getValue().size()!=0)) {
-            LinksPedidoItemsList = pedidos.getValue();
+            linksPedidoItemsList = pedidos.getValue();
+            int aux=0;
+            //tomar nombres de los items
 
-            //tomar nombres de los alumnos
-
-            for (RestLink pedidoLink : LinksPedidoItemsList) {
-                listNombres.add(pedidoLink.getTitle());
+            for (RestLink pedidoLink : linksPedidoItemsList) {
+                mSource.add(new RowObject(aux,false,pedidoLink.getTitle()));
+                aux++;
             }
         }else mostrarMensaje("No Existen ITEMS");
 
-        //llenar la lista
-      /*  final StableArrayAdapter adapter = new StableArrayAdapter(getBaseContext(),
-                android.R.layout.simple_list_item_1, listNombres);*/
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item, listNombres);
-        listview.setAdapter(adapter);
-        listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        /*
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listview = (ListView) findViewById(R.id.list_items);
+        listview.setAdapter(new RadioButtonAdapter(getApplicationContext(), mSource));
+        marcarItemsResueltos(linksPedidoItemsList);
+    }
 
-
-
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, final View view,
-                                    int position, final long id) {
-                final String item = (String) parent.getItemAtPosition(position);
-
-                Log.v("nombre", pedidos.getValue().get(position).getTitle());
-                Log.v("link", pedidos.getValue().get(position).getHref());
-
-                String urlEquipo = pedidos.getValue().get(position).getHref();
-
-                Intent newIntent = new Intent("android.intent.action.PEDIDO_ITEM_DETALLE");
-                newIntent.putExtra("user",user);
-                newIntent.putExtra("pass",pass);
-                newIntent.putExtra("link",pedidos.getValue().get(position).getHref());
-
-                startActivity(newIntent);
-
-
-            }
-        });*/
-
+    public void marcarItemsResueltos(List tittles){
+        ListView auxList=(ListView) findViewById(R.id.list_items);
+        int count = tittles.size();
+        String tittle;
+        for (int i = 0; i < count; i++)
+        {
+            tittle= mSource.get(i).getHeading();
+            if (tittle.endsWith("RESUELTO"))
+                mSource.get(i).setFirstChecked(true);
+        }
     }
 
     public void guardarNuevosEstados(View view)
     {
         int count = listview.getAdapter().getCount();
-        boolean check=false;
-        for (int i = 0; i < count; i++)
-        {
-            if(check)
-                itemsList=itemsList+"&";
-            check=false;
-            CheckedTextView row = (CheckedTextView) listview.getChildAt(i);
-            CheckedTextView tvTest = (CheckedTextView) row.findViewById(R.id.checkedTextView1);
-            //  Get your controls from this ViewGroup and perform your task on them =)
-            if (tvTest.isChecked())
-            {
-                check=true;
-                String tittle=(String) tvTest.getText();
-                itemsList=itemsList+tittle.charAt(0);
-                // DO SOMETHING
-                Log.v("lista actual", itemsList +"");
-            }
-
-        }
+        RadioButtonAdapter auxAdapter=(RadioButtonAdapter)listview.getAdapter();
+        itemsList=auxAdapter.getStringWithClavesResueltos();
+        itemsList2=auxAdapter.getStringWithClavesNoResueltos();
         try {
              new UpdateListPedidoItemThread().execute().get();
         } catch (InterruptedException e) {
@@ -157,16 +138,32 @@ public class PedidoItemListActivity extends Activity{
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        Intent intent = new Intent("android.intent.action.PEDIDO_ITEMS_LIST");
+        try {
+            new UpdateListPedidoItemThreadNoResueltos().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        try {
+            new UpdatePedidoEstadoThread().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        /*Intent intent = new Intent("android.intent.action.PEDIDO_ITEMS_LIST");
 
         intent.putExtra("url", url);
         intent.putExtra("user", user);
         intent.putExtra("pass", pass);
 
-        startActivity(intent);
+        startActivity(intent);*/
+        this.finish();
 
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -260,7 +257,78 @@ public class PedidoItemListActivity extends Activity{
                 headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
                 UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(newUrl);
                 builder.queryParam("lista",itemsList);
-                ResponseEntity<Void> response = restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.POST, requestEntity, Void.class);
+                restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.POST, requestEntity, Void.class);
+
+            } catch (Exception e) {
+                Log.e("main_activity", e.getMessage(), e);
+            }
+
+            return null;
+        }
+    }
+
+    private class UpdateListPedidoItemThreadNoResueltos extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void...  params) {
+            try {
+
+
+                //Services services = null;
+                Log.v("ingresando User y Pass", user + " : " + pass);
+                // Set the username and password for creating a Basic Auth request
+                HttpAuthentication authHeader = new HttpBasicAuthentication(user, pass);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
+
+                Log.v("ingresando URL", newUrl2);
+                RestTemplate restTemplate = new RestTemplate();
+
+                MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+                converter.getObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+                restTemplate.getMessageConverters().add(converter);
+                HttpHeaders headers = new HttpHeaders();
+                headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+                UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(newUrl2);
+                builder.queryParam("lista",itemsList2);
+                restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.POST, requestEntity, Void.class);
+
+            } catch (Exception e) {
+                Log.e("main_activity", e.getMessage(), e);
+            }
+
+            return null;
+        }
+    }
+
+    private class UpdatePedidoEstadoThread extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void...  params) {
+            try {
+
+
+                //Services services = null;
+                Log.v("ingresando User y Pass", user + " : " + pass);
+                // Set the username and password for creating a Basic Auth request
+                HttpAuthentication authHeader = new HttpBasicAuthentication(user, pass);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
+
+                Log.v("ingresando URL", urlUpdateEstadoPedido);
+                RestTemplate restTemplate = new RestTemplate();
+
+                MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+                converter.getObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+                restTemplate.getMessageConverters().add(converter);
+                HttpHeaders headers = new HttpHeaders();
+                headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+                UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(urlUpdateEstadoPedido);
+                Log.v("ingresando Clave", clave);
+                builder.queryParam("clave",clave);
+                restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.POST, requestEntity, Void.class);
 
             } catch (Exception e) {
                 Log.e("main_activity", e.getMessage(), e);
@@ -327,10 +395,119 @@ public class PedidoItemListActivity extends Activity{
 
         @Override
         public boolean hasStableIds() {
-            return true;
+        return true;
+    }
+
+
+
+}
+
+    private class RadioButtonAdapter extends ArrayAdapter<RowObject> {
+
+        ArrayList<RowObject> mSource1;
+
+        class ViewHolder {
+            RadioGroup rbGroup;
+            RadioButton btn1;
+            RadioButton btn2;
+            TextView tittle;
         }
 
+        private LayoutInflater mInflater;
 
+        public RadioButtonAdapter(Context context, ArrayList<RowObject> mSource) {
+            super(context, R.layout.row, mSource);
+            mSource1=mSource;
+            mInflater = LayoutInflater.from(context);
+        }
 
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.row, null);
+
+                holder = new ViewHolder();
+                holder.rbGroup = (RadioGroup) convertView.findViewById(R.id.mRadioGroup);
+                holder.btn1 = (RadioButton) convertView.findViewById(R.id.mRadio1);
+                holder.btn2 = (RadioButton) convertView.findViewById(R.id.mRadio2);
+                holder.tittle=(TextView) convertView.findViewById(R.id.nombre_item);
+                String titulo=mSource1.get(position).getHeading();
+                titulo=titulo.substring(3);
+                titulo=titulo.replace("Resuelto: RESUELTO", "");
+                titulo=titulo.replace("Resuelto: PENDIENTE","");
+                titulo=titulo.replace("Resuelto: NO_RESUELTO","");
+                holder.tittle.setText(titulo);
+                convertView.setTag(holder);
+                if(mSource1.get(position).getHeading().endsWith("RESUELTO")){
+                    holder.btn1.setChecked(true);
+                }else{
+                    holder.btn1.setChecked(true);
+                }
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            holder.rbGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    switch (checkedId) {
+                        case R.id.mRadio1:
+                            mSource.get(position).setFirstChecked(true);
+                            break;
+
+                        case R.id.mRadio2:
+                            mSource.get(position).setFirstChecked(false);
+                            break;
+                    }
+                }
+            });
+
+            if (mSource.get(position).isFirstChecked()) {
+                holder.btn1.setChecked(true);
+                holder.btn2.setChecked(false);
+            } else {
+                holder.btn1.setChecked(false);
+                holder.btn2.setChecked(true);
+            }
+
+            return convertView;
+        }
+
+        private int getNumberOfFirstCheckedViews() {
+            int count = 0;
+            for (RowObject object : mSource) {
+                if (object.isFirstChecked()) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        private String getStringWithClavesResueltos() {
+            int count = 0;
+            String salida="";
+            for (RowObject object : mSource) {
+                if (object.isFirstChecked()) {
+                    salida=salida+object.getHeading().charAt(0)+"&";
+                }
+            }
+            //if(salida!="")
+            //   salida=salida.substring(0,salida.length()-1);
+            return salida;
+        }
+
+        private String getStringWithClavesNoResueltos() {
+            int count = 0;
+            String salida="";
+            for (RowObject object : mSource) {
+                if (!object.isFirstChecked()) {
+                    salida=salida+object.getHeading().charAt(0)+"&";
+                }
+            }
+            //if(salida!="")
+             //   salida=salida.substring(0,salida.length()-1);
+            return salida;
+        }
     }
 }

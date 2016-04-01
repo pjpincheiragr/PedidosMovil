@@ -49,4 +49,13 @@
     <string name="CADETES">CADETES</string>
     <string name="Activo" >Activo:</string>
     <string name="Confirmado">Confirmado:</string>
+    <string name="filtrar_por_vendedor">Filtrar por Vendedor</string>
+    <string name="vendedores">VENDEDORES</string>
+    <string name="selec_vendedor">Seleccione un vendedor</string>
+    <string name="Cadete">Cadete:</string>
+    <string name="marcar_resuelto">RESUELTOS</string>
+    <string name="marcarNoResuelto">NO RESUELTO</string>
+    <string name="resuelto">resuelto</string>
+    <string name="resuelto_check">resuelto</string>
+    <string name="no_resuelto_check">no resuelto</string>
 </resources>

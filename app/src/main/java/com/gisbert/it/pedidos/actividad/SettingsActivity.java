@@ -22,6 +22,7 @@ public class SettingsActivity extends Activity {
         setContentView(R.layout.activity_settings);
 
         final EditText editTextUrl = (EditText)findViewById(R.id.editText_settings_url);
+        final EditText editTextCadete = (EditText)findViewById(R.id.editText_cadete);
         Button buttonSave = (Button)findViewById(R.id.button_guardar);
         final Activity activity = this;
 
@@ -37,6 +38,7 @@ public class SettingsActivity extends Activity {
 
                 final GestionConfig config = gestionConfigRepositorio.recuperarConfiguracion(activity);
                 config.setUrlRestful(editTextUrl.getText().toString());
+                config.setCadete(editTextCadete.getText().toString());
                 gestionConfigRepositorio.guardarConfiguracion(activity, config);
 
                 finish();

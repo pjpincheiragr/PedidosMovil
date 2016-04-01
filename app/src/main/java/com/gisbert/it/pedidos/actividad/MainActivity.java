@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
-                }
+                }+
 
                 List<RestLink> LinksEquiposList = null;
                 final List<String> listNombres = new ArrayList<String>();

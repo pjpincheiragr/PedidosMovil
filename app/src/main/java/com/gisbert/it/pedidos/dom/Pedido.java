@@ -29,12 +29,13 @@ public class Pedido {
         DatoString urgencia;
         DatoString observacion;
         DatoSucursal sucursal;
-        DatoBoolean confirmado;
+        DatoString confirmado;
         DatoBoolean activo;
 
 
 
         public DatoString getClave() { return clave;}
+
         public void setClave(DatoString clave) {this.clave = clave;}
 
         public DatoString getNumeroVenta() { return numeroVenta;}
@@ -86,12 +87,9 @@ public class Pedido {
 
 
         public String getConfirmado() {
-            if(confirmado.getValue())
-                return "SI";
-            else
-                return "NO";
+            return this.confirmado.getValue();
         }
-        public void setConfirmado(DatoBoolean confirmado) {
+        public void setConfirmado(DatoString confirmado) {
             this.confirmado=confirmado;
         }
 

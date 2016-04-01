@@ -38,6 +38,14 @@
         </intent-filter>
     </activity>
 
+    <activity android:name=".actividad.PedidoFinalizadosListActivity" android:label="OrdenServicio">
+        <intent-filter>
+            <action android:name="android.intent.action.PEDIDOS_FINALIZADOS_LIST" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
+
     <activity android:name=".actividad.PedidoItemListActivity" android:label="OrdenServicio">
         <intent-filter>
             <action android:name="android.intent.action.PEDIDO_ITEMS_LIST" />
@@ -81,6 +89,20 @@
     <activity android:name=".actividad.RutasListActivity" android:label="RepuestoDetalle">
         <intent-filter>
             <action android:name="android.intent.action.RUTAS_LIST" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
+    <activity android:name=".actividad.VendedoresList" android:label="FiltrarPedido">
+        <intent-filter>
+            <action android:name="android.intent.action.FILTRAR_PEDIDO_VENDEDOR" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
+    <activity android:name=".actividad.PedidoListFiltradoActivity" android:label="MostrarPedidosFiltrados">
+        <intent-filter>
+            <action android:name="android.intent.action.MOSTRAR_PEDIDOS_VENDEDOR" />
 
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>

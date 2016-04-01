@@ -5,6 +5,7 @@ public class GestionConfig {
     String user;
     String pass;
     String urlRestful;
+    String cadete;
     Boolean save;
 
     public String getUser() {
@@ -29,6 +30,14 @@ public class GestionConfig {
 
     public void setUrlRestful(String urlRestful) {
         this.urlRestful = urlRestful;
+    }
+
+    public String getCadete() {
+        return cadete;
+    }
+
+    public void setCadete(String cadete) {
+        this.cadete = cadete;
     }
 
     public Boolean getSave() {

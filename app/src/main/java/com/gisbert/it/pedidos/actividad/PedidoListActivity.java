@@ -81,16 +81,19 @@ public class PedidoListActivity extends Activity {
     String pass;
     String estado;
     Pedidos pedidos;
+    String originalUrl;
+    ListView listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido_list);
 
-        ListView listview = (ListView) findViewById(R.id.list_pedidos);
+        listview = (ListView) findViewById(R.id.list_pedidos);
 
         Intent intent = getIntent();
-        url =  intent.getStringExtra("url")+ "services/RepositorioPedido/actions/listAll/invoke";
+        originalUrl=intent.getStringExtra("url");
+        url =  intent.getStringExtra("url")+ "services/RepositorioPedido/actions/findByState/invoke";
         user =  intent.getStringExtra("user");
         pass =  intent.getStringExtra("pass");
         estado=intent.getStringExtra("estado");
@@ -134,20 +137,59 @@ public class PedidoListActivity extends Activity {
 
                 Intent newIntent = new Intent("android.intent.action.PEDIDO_DETALLE");
                 newIntent.putExtra("user",user);
-                newIntent.putExtra("pass",pass);
-                newIntent.putExtra("link",pedidos.getResult().getValue().get(position).getHref());
+                newIntent.putExtra("pass", pass);
+                newIntent.putExtra("link", pedidos.getResult().getValue().get(position).getHref());
 
                 startActivity(newIntent);
-
 
             }
         });
 
     }
 
+    protected void onRestart(){
+        super.onRestart();
+        try {
+            pedidos = new FillListOfPedidosThread().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        List<RestLink> LinksPedidosList = null;
+        final List<String> listNombres = new ArrayList<String>();
+        if ((pedidos !=null)&&(pedidos.getResult().getValue().size()!=0)) {
+            LinksPedidosList = pedidos.getResult().getValue();
+
+            //tomar nombres de los alumnos
+
+            for (RestLink pedidoLink : LinksPedidosList) {
+                listNombres.add(pedidoLink.getTitle());
+            }
+        }else mostrarMensaje("No Existen PEDIDOS");
+
+        //llenar la lista
+        final StableArrayAdapter adapter = new StableArrayAdapter(getBaseContext(),
+                android.R.layout.simple_list_item_1, listNombres);
+        listview.setAdapter(adapter);
+    }
+
     public void onClickButton_Salir(View view) {
 
         finish();
+
+    }
+
+    public void onClickButton_Filtrar(View view) {
+
+        Intent intent = new Intent("android.intent.action.FILTRAR_PEDIDO_VENDEDOR");
+
+        intent.putExtra("url", originalUrl);
+        intent.putExtra("user", user);
+        intent.putExtra("pass", pass);
+
+        startActivity(intent);
     }
 
     @Override
@@ -197,6 +239,7 @@ public class PedidoListActivity extends Activity {
                 HttpHeaders headers = new HttpHeaders();
                 headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
                 UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
+                builder.queryParam("estado","NUEVO");
                 HttpEntity<?> entity = new HttpEntity<>(headers);
                 ResponseEntity<Pedidos> response = restTemplate.exchange(builder.build().encode().toUri(),HttpMethod.POST, requestEntity, Pedidos.class);
                 Pedidos pedidos = response.getBody();

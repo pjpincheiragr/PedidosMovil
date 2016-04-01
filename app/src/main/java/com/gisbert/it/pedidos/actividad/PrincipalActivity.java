@@ -53,7 +53,7 @@ public class PrincipalActivity extends Activity {
         title.setText( title.getText() + ": " + user);
 */
         //Captura del evento Click del boton
-        ImageButton button_Equipment = (ImageButton) findViewById(R.id.boton1);
+        Button button_Equipment = (Button) findViewById(R.id.boton1);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,9 +73,9 @@ public class PrincipalActivity extends Activity {
         startActivity(intent);
     }
 
-    public void onClickButton_PedidosItem(View view) {
+    public void onClickButton_PedidosFinalizados(View view) {
 
-        Intent intent = new Intent("android.intent.action.PEDIDOS_ITEM_LIST");
+        Intent intent = new Intent("android.intent.action.PEDIDOS_FINALIZADOS_LIST");
 
         intent.putExtra("url", url);
         intent.putExtra("user", user);
